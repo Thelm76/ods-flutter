@@ -30,12 +30,6 @@ class NavigationItems {
   late final List<Widget> _screens;
 
   NavigationItems(this.context) {
-    var colorScheme = Theme.of(context).colorScheme;
-
-    var activeColorFilter =
-        ColorFilter.mode(colorScheme.primary, BlendMode.srcIn);
-    var colorFilter = ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
-
     _destinationsStatic = [
       OdsNavigationItem(
         context: context,

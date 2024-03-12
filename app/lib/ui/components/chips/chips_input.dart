@@ -73,8 +73,9 @@ class _BodyState extends State<_Body> {
 
     final ChipsCustomizationState? customizationState =
         ChipsCustomization.of(context);
-    var colorScheme = Theme.of(context).colorScheme;
-    var colorFilter = ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
+    final colorScheme = Theme.of(context).colorScheme;
+    final colorFilter =
+        ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
 
     return Padding(
       padding:

@@ -19,7 +19,7 @@ class ExpandableTextWidget extends StatefulWidget {
   ExpandableTextWidget({required this.text, this.maxLines = 2});
 
   @override
-  _ExpandableTextWidgetState createState() => _ExpandableTextWidgetState();
+  State<ExpandableTextWidget> createState() => _ExpandableTextWidgetState();
 }
 
 class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
@@ -27,7 +27,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

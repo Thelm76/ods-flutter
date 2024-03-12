@@ -35,7 +35,7 @@ class ButtonsContained extends StatefulWidget {
   ButtonsContained({Key? key, required this.emphasis}) : super(key: key);
 
   @override
-  _ButtonsContainedState createState() => _ButtonsContainedState();
+  State<ButtonsContained> createState() => _ButtonsContainedState();
 }
 
 class _ButtonsContainedState extends State<ButtonsContained> {

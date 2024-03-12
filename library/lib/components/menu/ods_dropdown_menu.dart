@@ -11,7 +11,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:ods_flutter/components/menu/item/ods_dropdown_menu_Item.dart';
+import 'package:ods_flutter/components/menu/item/ods_dropdown_menu_item.dart';
 
 /// ODS DropdownMenu.
 ///

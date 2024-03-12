@@ -72,16 +72,16 @@ class _BodyState extends State<_Body> {
 
     final ListCustomizationState? customizationState =
         ListCustomization.of(context);
-    var colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       body: ListView.builder(
         itemCount: OdsApplication.recipes.length - 4,
         itemBuilder: (context, index) {
-          var recipe = OdsApplication.recipes[index];
+          final recipe = OdsApplication.recipes[index];
           bool isSelectionControl = selectionControls[index];
-          var url = "";
-          switch (customizationState?.selectedLeadingElement ?? "") {
+          final String url;
+          switch (customizationState?.selectedLeadingElement) {
             case ListLeadingEnum.icon:
               url = recipe.getIconPath();
               break;
@@ -95,7 +95,9 @@ class _BodyState extends State<_Body> {
               url = recipe.url;
               break;
             case ListLeadingEnum.none:
-              // TODO: Handle this case.
+            // TODO: Handle this case.
+            case null:
+              url = recipe.url;
               break;
           }
 

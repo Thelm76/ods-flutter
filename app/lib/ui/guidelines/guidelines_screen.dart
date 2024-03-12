@@ -34,7 +34,7 @@ class _GuidelinesScreenState extends State<GuidelinesScreen> {
       child: ListView.builder(
         itemCount: widget.odsGuidelines.length,
         itemBuilder: (context, index) {
-          var guideline = widget.odsGuidelines[index];
+          final guideline = widget.odsGuidelines[index];
           return Padding(
             padding: const EdgeInsets.all(spacingS),
             child: Column(

@@ -14,20 +14,20 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-  var history = <WordPair>[];
+  WordPair current = WordPair.random();
+  final history = <WordPair>[];
 
   GlobalKey? historyListKey;
 
   void getNext() {
     history.insert(0, current);
-    var animatedList = historyListKey?.currentState as AnimatedListState?;
+    final animatedList = historyListKey?.currentState as AnimatedListState?;
     animatedList?.insertItem(0);
     current = WordPair.random();
     notifyListeners();
   }
 
-  var favorites = <WordPair>[];
+  final favorites = <WordPair>[];
 
   void toggleFavorite([WordPair? pair]) {
     pair = pair ?? current;

@@ -55,7 +55,7 @@ class GuidelineSpacingsScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: spacingItems.length,
                 itemBuilder: (context, index) {
-                  var spacing = spacingItems[index];
+                  final spacing = spacingItems[index];
 
                   return OdsListItem(
                     title: spacing.name,

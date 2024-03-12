@@ -91,8 +91,9 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  var recipe =
-      OdsApplication.recipes[Random().nextInt(OdsApplication.recipes.length)];
+  final recipe = OdsApplication.recipes[Random().nextInt(
+    OdsApplication.recipes.length,
+  )];
 
   _BodyState();
 
@@ -103,7 +104,7 @@ class _BodyState extends State<_Body> {
     final TextFieldCustomizationState? customizationState =
         TextFieldCustomization.of(context);
     final TextEditingController controllerTextField = TextEditingController();
-    TextInputType? keyboardType;
+    final TextInputType? keyboardType;
     TextInputAction? keyboardAction;
 
     ///Keyboard type
@@ -133,6 +134,7 @@ class _BodyState extends State<_Body> {
     ///Keyboard action
     switch (customizationState?.selectedKeyboardAction) {
       case KeyboardActionEnum.none:
+      case null:
         if (Platform.isAndroid) {
           keyboardAction = TextInputAction.none;
         } else if (Platform.isIOS) {

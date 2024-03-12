@@ -58,8 +58,9 @@ class _CardVerticalImageFirstState extends State<CardVerticalImageFirst> {
 }
 
 class _Body extends StatelessWidget {
-  var recipe =
-      OdsApplication.recipes[Random().nextInt(OdsApplication.recipes.length)];
+  final recipe = OdsApplication.recipes[Random().nextInt(
+    OdsApplication.recipes.length,
+  )];
 
   @override
   Widget build(BuildContext context) {

@@ -113,11 +113,12 @@ If icons are provided in SVG format the system does not apply right color on ima
 
 ```dart
   List<NavigationDestination> _destinations(BuildContext context) {
-    var colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
-    var activeColorFilter =
+    final activeColorFilter =
         ColorFilter.mode(colorScheme.primary, BlendMode.srcIn);
-    var colorFilter = ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
+    final colorFilter = ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
+
     return [
       NavigationDestination(
           tooltip: '',

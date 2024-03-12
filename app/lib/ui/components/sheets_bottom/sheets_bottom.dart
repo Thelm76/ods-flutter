@@ -140,7 +140,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
           physics: NeverScrollableScrollPhysics(),
           itemCount: 3,
           itemBuilder: (context, index) {
-            var recipe = OdsApplication.recipes[index];
+            final recipe = OdsApplication.recipes[index];
             final odsImageShape = OdsImageShape(
                 context, OdsImageShapeEnum.icon.name, recipe.getIconPath());
 

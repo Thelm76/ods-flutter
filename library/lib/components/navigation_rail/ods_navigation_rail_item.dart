@@ -35,8 +35,8 @@ class OdsNavigationRailItem extends NavigationRailDestination {
       {bool isSelected = false}) {
     final l10n = context.odsL10n;
 
-    var colorScheme = Theme.of(context).colorScheme;
-    var colorFilter = isSelected
+    final colorScheme = Theme.of(context).colorScheme;
+    final colorFilter = isSelected
         ? ColorFilter.mode(colorScheme.primary, BlendMode.srcIn)
         : ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
 

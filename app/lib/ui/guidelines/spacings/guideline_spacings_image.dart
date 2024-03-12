@@ -19,7 +19,7 @@ class GuidelineSpacingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return SizedBox(
       width: 60,
       height: double.infinity,

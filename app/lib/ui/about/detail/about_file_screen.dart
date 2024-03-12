@@ -307,7 +307,7 @@ String convertToHtml(
     return partialHTMLText;
   }
 
-  var result = "<html>";
+  String result = "<html>";
   result += head;
 
   if (Platform.isIOS) {

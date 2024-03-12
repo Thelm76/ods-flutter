@@ -64,7 +64,7 @@ class _Body extends StatelessWidget {
       ThemeSelector(),
       PopupMenuButton<String>(
         itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-          for (var recipe in OdsApplication.recipes)
+          for (final recipe in OdsApplication.recipes)
             PopupMenuItem<String>(
               value: recipe.title,
               child: Text(recipe.title),

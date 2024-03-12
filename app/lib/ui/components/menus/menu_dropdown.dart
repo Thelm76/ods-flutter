@@ -15,7 +15,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ods_flutter/components/lists/ods_list_switch.dart';
-import 'package:ods_flutter/components/menu/item/ods_dropdown_menu_Item.dart';
+import 'package:ods_flutter/components/menu/item/ods_dropdown_menu_item.dart';
 import 'package:ods_flutter/components/menu/ods_dropdown_menu.dart';
 import 'package:ods_flutter/components/sheets_bottom/ods_sheets_bottom.dart';
 import 'package:ods_flutter/guidelines/spacings.dart';
@@ -63,8 +63,9 @@ class _Body extends StatefulWidget {
 }
 
 class __BodyState extends State<_Body> {
-  var recipe =
-      OdsApplication.recipes[Random().nextInt(OdsApplication.recipes.length)];
+  final recipe = OdsApplication.recipes[Random().nextInt(
+    OdsApplication.recipes.length,
+  )];
 
   @override
   Widget build(BuildContext context) {

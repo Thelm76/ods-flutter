@@ -59,8 +59,9 @@ class _BodyState extends State<_Body> {
 
     final DialogsCustomizationState? customizationState =
         DialogsCustomization.of(context);
-    var recipe =
-        OdsApplication.recipes[Random().nextInt(OdsApplication.recipes.length)];
+    final recipe = OdsApplication.recipes[Random().nextInt(
+      OdsApplication.recipes.length,
+    )];
 
     return SingleChildScrollView(
       child: Center(

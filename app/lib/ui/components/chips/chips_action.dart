@@ -63,8 +63,9 @@ class _Body extends StatelessWidget {
 
     final ChipsCustomizationState? customizationState =
         ChipsCustomization.of(context);
-    var colorScheme = Theme.of(context).colorScheme;
-    var colorFilter = ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
+    final colorScheme = Theme.of(context).colorScheme;
+    final colorFilter =
+        ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
     return Padding(
       padding:
           const EdgeInsets.only(left: spacingS, right: spacingM, top: spacingM),

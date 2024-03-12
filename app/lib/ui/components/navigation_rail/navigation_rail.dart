@@ -77,20 +77,21 @@ class _NavRailDemoState extends State<_NavRailDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final NavigationRailCustomizationState? customizationState =
-        NavigationRailCustomization.of(context);
+    final customizationState = NavigationRailCustomization.of(context);
 
     List<OdsNavigationRailItem> navigationDestinations =
         _destinations(context).sublist(0, customizationState?.numberOfItems);
 
-    Widget? firstIcon;
-    Widget? secondIcon;
+    final Widget? firstIcon;
+    final Widget? secondIcon;
+
     if (selectedIndex >= navigationDestinations.length) {
       selectedIndex = navigationDestinations.length - 1;
     }
 
     switch (customizationState?.selectedElement) {
       case NavigationRailsEnum.none:
+      case null:
         firstIcon = null;
         secondIcon = null;
         break;

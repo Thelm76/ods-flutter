@@ -29,8 +29,8 @@ class OdsImageShape {
   OdsImageShape(this.context, this.shape, this.url);
 
   Widget? buildImage() {
-    var colorScheme = Theme.of(context).colorScheme;
-    var activeColorFilter =
+    final colorScheme = Theme.of(context).colorScheme;
+    final activeColorFilter =
         ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
 
     if (shape == OdsImageShapeEnum.none.name) {

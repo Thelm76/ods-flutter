@@ -33,7 +33,7 @@ class _ModulesScreenState extends State<ModulesScreen> {
       child: ListView.builder(
         itemCount: widget.odsModules.length,
         itemBuilder: (context, index) {
-          var module = widget.odsModules[index];
+          final module = widget.odsModules[index];
           return Padding(
             padding: const EdgeInsets.all(spacingS),
             child: Column(

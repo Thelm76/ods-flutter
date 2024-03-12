@@ -74,17 +74,17 @@ class _BodyState extends State<_Body> {
     final ListCustomizationState? customizationState =
         ListCustomization.of(context);
 
-    var colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     /*
     return Scaffold(
       body: ListView.builder(
         itemCount: OdsApplication.recipes.length - 4,
         itemBuilder: (context, index) {
-          var recipe = OdsApplication.recipes[index];
+          final recipe = OdsApplication.recipes[index];
           bool isSwitched = switchValues[index];
 
-          var url = "";
+          final url = "";
           switch (customizationState?.selectedLeadingElement ?? "") {
             case ListsLeadingEnum.icon:
               url = recipe.getIconPath();
@@ -136,10 +136,10 @@ class _BodyState extends State<_Body> {
 
      */
 
-    var recipe = OdsApplication.recipes[0];
+    final recipe = OdsApplication.recipes[0];
     bool isSelectionControl = selectionControls[0];
-    var url = "";
-    switch (customizationState?.selectedLeadingElement ?? "") {
+    final String url;
+    switch (customizationState?.selectedLeadingElement) {
       case ListLeadingEnum.icon:
         url = recipe.getIconPath();
         break;
@@ -153,11 +153,16 @@ class _BodyState extends State<_Body> {
         url = recipe.url;
         break;
       case ListLeadingEnum.none:
-        // TODO: Handle this case.
+      // TODO: Handle this case.
+      case null:
+        url = "";
         break;
     }
     final odsImageShape = OdsImageShape(
-        context, customizationState?.selectedLeadingElement.name, url);
+      context,
+      customizationState?.selectedLeadingElement.name,
+      url,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

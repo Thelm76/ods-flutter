@@ -23,12 +23,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  var _selectedIndex = 0;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    var navigationItems = NavigationItems(context);
-    var selectedItem = navigationItems.getSelectedMenuItem(_selectedIndex);
+    final navigationItems = NavigationItems(context);
+    final selectedItem = navigationItems.getSelectedMenuItem(_selectedIndex);
 
     return Scaffold(
       appBar: MainAppBar(selectedItem.label),
