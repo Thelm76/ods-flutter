@@ -10,7 +10,6 @@
  * Software description: Flutter library of reusable graphical components for Android and iOS
  */
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -36,6 +35,9 @@ class OdsAboutFileScreen extends StatelessWidget {
     const horizontalPadding = 13.0;
     const verticalPadding = 13.0;
 
+    final webviewController = WebViewController()
+      ..setBackgroundColor(Colors.transparent);
+
     return Scaffold(
       appBar: OdsAppTopBar(
         title: title,
@@ -51,32 +53,23 @@ class OdsAboutFileScreen extends StatelessWidget {
               /// Convert Markdown to HTML using the markdown package
               String htmlContent = markdownToHtml(markdownContent);
 
-              print(_wrapHtmlWithCss(
+              final htmlWithCss = _wrapHtmlWithCss(
                 htmlContent,
                 darkModeEnabled,
                 colors,
                 horizontalPadding,
                 verticalPadding,
-              ));
-              return WebView(
-                initialUrl: 'about:blank',
-                onWebViewCreated: (WebViewController webViewController) {
-                  webViewController.loadUrl(Uri.dataFromString(
-                    _wrapHtmlWithCss(
-                      htmlContent,
-                      darkModeEnabled,
-                      colors,
-                      horizontalPadding,
-                      verticalPadding,
-                    ),
-                    mimeType: 'text/html',
-                    encoding: Encoding.getByName('utf-8'),
-                  ).toString());
-                },
-                backgroundColor: Colors.transparent,
+              );
+
+              print(htmlWithCss);
+
+              return WebViewWidget(
+                controller: webviewController..loadHtmlString(htmlWithCss),
               );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
         ),
