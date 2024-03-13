@@ -47,30 +47,30 @@ class OdsAboutFileScreen extends StatelessWidget {
         child: FutureBuilder(
           future: _loadFileData(),
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              String markdownContent = snapshot.data as String;
-
-              /// Convert Markdown to HTML using the markdown package
-              String htmlContent = markdownToHtml(markdownContent);
-
-              final htmlWithCss = _wrapHtmlWithCss(
-                htmlContent,
-                darkModeEnabled,
-                colors,
-                horizontalPadding,
-                verticalPadding,
-              );
-
-              print(htmlWithCss);
-
-              return WebViewWidget(
-                controller: webviewController..loadHtmlString(htmlWithCss),
-              );
-            } else {
+            if (snapshot.connectionState != ConnectionState.done) {
               return Center(
                 child: CircularProgressIndicator(),
               );
             }
+
+            String markdownContent = snapshot.requireData;
+
+            /// Convert Markdown to HTML using the markdown package
+            String htmlContent = markdownToHtml(markdownContent);
+
+            final htmlWithCss = _wrapHtmlWithCss(
+              htmlContent,
+              darkModeEnabled,
+              colors,
+              horizontalPadding,
+              verticalPadding,
+            );
+
+            print(htmlWithCss);
+
+            return WebViewWidget(
+              controller: webviewController..loadHtmlString(htmlWithCss),
+            );
           },
         ),
       ),

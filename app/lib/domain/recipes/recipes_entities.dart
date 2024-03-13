@@ -141,9 +141,9 @@ class Recipe {
   String getIconPath() {
     if (Entity.iconPaths.containsKey(iconName)) {
       return Entity.iconPaths[iconName]!;
-    } else {
-      return 'assets/placeholder.png';
     }
+
+    return 'assets/placeholder.png';
   }
 }
 

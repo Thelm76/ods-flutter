@@ -22,8 +22,8 @@ Widget displayImage(String imagePath, double? width, {String? semanticsLabel}) {
   if (imagePath.contains('svg')) {
     return SvgPicture.asset(imagePath,
         semanticsLabel: semanticsLabel, fit: BoxFit.cover, width: width);
-  } else {
-    return Image.asset(imagePath,
-        semanticLabel: semanticsLabel, fit: BoxFit.cover, width: width);
   }
+
+  return Image.asset(imagePath,
+      semanticLabel: semanticsLabel, fit: BoxFit.cover, width: width);
 }

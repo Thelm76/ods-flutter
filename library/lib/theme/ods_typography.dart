@@ -22,9 +22,9 @@ Typography odsTypography = Typography.material2021(
 _getPlatformTypography() {
   if (defaultTargetPlatform == TargetPlatform.iOS) {
     return iosTextTheme;
-  } else {
-    return androidTextTheme;
   }
+
+  return androidTextTheme;
 }
 
 TextTheme androidTextTheme = const TextTheme(

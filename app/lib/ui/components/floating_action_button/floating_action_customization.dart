@@ -84,13 +84,7 @@ class FloatingActionButtonCustomizationState
   /// Determine if _hasIcon should be enabled
   void updateHasIcon() {
     setState(() {
-      if (_selectedElement == FloatingActionButtonEnum.defaultFab ||
-          _selectedElement == FloatingActionButtonEnum.smallFab ||
-          _selectedElement == FloatingActionButtonEnum.largeFab) {
-        _hasIcon = false;
-      } else {
-        _hasIcon = true;
-      }
+      _hasIcon = _selectedElement == FloatingActionButtonEnum.extendedFab;
     });
   }
 
