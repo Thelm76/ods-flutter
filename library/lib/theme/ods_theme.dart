@@ -110,49 +110,29 @@ class OdsTheme {
         const RadioThemeData(fillColor: LightControlRadioButtonsFillColor()),
     switchTheme: SwitchThemeData(
       trackColor: MaterialStateProperty.resolveWith((states) {
-        /// Disabled and selected
-        if (states.contains(MaterialState.disabled) &&
-            states.contains(MaterialState.selected)) {
-          return grey300;
-        }
+        final selected = states.contains(MaterialState.selected);
+        final disabled = states.contains(MaterialState.disabled);
 
-        /// Enabled and selected
-        else if (states.contains(MaterialState.selected)) {
-          return positive200;
-        }
-
-        /// Disabled and not selected
-        else if (states.contains(MaterialState.disabled)) {
-          return grey300;
-        }
-
-        /// Enabled and not selected (default color)
-        else {
-          return grey200;
-        }
+        return switch ((selected, disabled)) {
+          (true, true) => grey300,
+          (true, false) => positive200,
+          (false, true) => grey300,
+          (false, false) => grey300,
+        };
       }),
       overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.4)),
       thumbColor: MaterialStateProperty.resolveWith((states) {
-        /// Disabled and selected
-        if (states.contains(MaterialState.disabled) &&
-            states.contains(MaterialState.selected)) {
-          return darkColorScheme.onSurface.withOpacity(_disabledOpacity);
-        }
+        final selected = states.contains(MaterialState.selected);
+        final disabled = states.contains(MaterialState.disabled);
 
-        /// Enabled and selected
-        else if (states.contains(MaterialState.selected)) {
-          return white100;
-        }
-
-        /// Disabled and not selected
-        else if (states.contains(MaterialState.disabled)) {
-          return darkColorScheme.onSecondary.withOpacity(_disabledOpacity);
-        }
-
-        /// Enabled and not selected (default color)
-        else {
-          return darkColorScheme.onSecondary;
-        }
+        return switch ((selected, disabled)) {
+          (true, true) =>
+            darkColorScheme.onSurface.withOpacity(_disabledOpacity),
+          (true, false) => white100,
+          (false, true) =>
+            darkColorScheme.onSecondary.withOpacity(_disabledOpacity),
+          (false, false) => darkColorScheme.onSecondary,
+        };
       }),
     ),
     snackBarTheme: SnackBarThemeData(
@@ -411,49 +391,29 @@ class OdsTheme {
         const RadioThemeData(fillColor: DarkControlRadioButtonsFillColor()),
     switchTheme: SwitchThemeData(
       trackColor: MaterialStateProperty.resolveWith((states) {
-        /// Disabled and selected
-        if (states.contains(MaterialState.disabled) &&
-            states.contains(MaterialState.selected)) {
-          return grey800;
-        }
+        final disabled = states.contains(MaterialState.disabled);
+        final selected = states.contains(MaterialState.selected);
 
-        /// Enabled and selected
-        else if (states.contains(MaterialState.selected)) {
-          return positive100;
-        }
-
-        /// Disabled and not selected
-        else if (states.contains(MaterialState.disabled)) {
-          return grey900;
-        }
-
-        /// Enabled and not selected (default color)
-        else {
-          return grey600;
-        }
+        return switch ((disabled, selected)) {
+          (true, true) => grey800,
+          (true, false) => grey900,
+          (false, true) => positive100,
+          (false, false) => grey600,
+        };
       }),
       overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.4)),
       thumbColor: MaterialStateProperty.resolveWith((states) {
-        /// Disabled and selected
-        if (states.contains(MaterialState.disabled) &&
-            states.contains(MaterialState.selected)) {
-          return darkColorScheme.onSurface.withOpacity(_disabledOpacity);
-        }
+        final selected = states.contains(MaterialState.selected);
+        final disabled = states.contains(MaterialState.disabled);
 
-        /// Enabled and selected
-        else if (states.contains(MaterialState.selected)) {
-          return white100;
-        }
-
-        /// Disabled and not selected
-        else if (states.contains(MaterialState.disabled)) {
-          return darkColorScheme.onSecondary.withOpacity(_disabledOpacity);
-        }
-
-        /// Enabled and not selected (default color)
-        else {
-          return darkColorScheme.onSecondary;
-        }
+        return switch ((selected, disabled)) {
+          (true, true) =>
+            darkColorScheme.onSurface.withOpacity(_disabledOpacity),
+          (true, false) => white100,
+          (false, true) =>
+            darkColorScheme.onSecondary.withOpacity(_disabledOpacity),
+          (false, false) => darkColorScheme.onSecondary,
+        };
       }),
     ),
     snackBarTheme: SnackBarThemeData(
@@ -635,9 +595,12 @@ class LightControlRadioButtonsFillColor extends MaterialStateColor {
   Color resolve(Set states) {
     if (states.contains(MaterialState.disabled)) {
       return lightColorScheme.onSurface.withOpacity(_disabledOpacity);
-    } else if (states.contains(MaterialState.selected)) {
+    }
+
+    if (states.contains(MaterialState.selected)) {
       return lightColorScheme.primary;
     }
+
     return grey600;
   }
 }
@@ -650,26 +613,15 @@ class LightControlCheckboxFillColor extends MaterialStateColor {
 
   @override
   Color resolve(Set states) {
-    /// Disabled and selected
-    if (states.contains(MaterialState.disabled) &&
-        states.contains(MaterialState.selected)) {
-      return lightColorScheme.onSurface.withOpacity(0.38);
-    }
+    final selected = states.contains(MaterialState.selected);
+    final disabled = states.contains(MaterialState.disabled);
 
-    /// Enabled and selected
-    else if (states.contains(MaterialState.selected)) {
-      return lightColorScheme.primary;
-    }
-
-    /// Disabled and not selected
-    else if (states.contains(MaterialState.disabled)) {
-      return lightColorScheme.onSecondary;
-    }
-
-    /// Enabled and not selected (default color)
-    else {
-      return lightColorScheme.onSecondary;
-    }
+    return switch ((selected, disabled)) {
+      (true, true) => lightColorScheme.onSurface.withOpacity(0.38),
+      (true, false) => lightColorScheme.primary,
+      (false, true) => lightColorScheme.onSecondary,
+      (false, false) => lightColorScheme.onSecondary,
+    };
   }
 }
 
@@ -681,12 +633,14 @@ class DarkControlRadioButtonsFillColor extends MaterialStateColor {
 
   @override
   Color resolve(Set states) {
-    if (states.contains(MaterialState.disabled)) {
-      return darkColorScheme.onSurface.withOpacity(_disabledOpacity);
-    } else if (states.contains(MaterialState.selected)) {
-      return darkColorScheme.primary;
-    }
-    return grey400;
+    final selected = states.contains(MaterialState.selected);
+    final disabled = states.contains(MaterialState.disabled);
+
+    return switch ((selected, disabled)) {
+      (_, true) => darkColorScheme.onSurface.withOpacity(_disabledOpacity),
+      (true, _) => darkColorScheme.primary,
+      _ => grey400
+    };
   }
 }
 
@@ -698,26 +652,15 @@ class DarkControlCheckboxFillColor extends MaterialStateColor {
 
   @override
   Color resolve(Set states) {
-    /// Disabled and selected
-    if (states.contains(MaterialState.disabled) &&
-        states.contains(MaterialState.selected)) {
-      return darkColorScheme.onSurface.withOpacity(0.38);
-    }
+    final selected = states.contains(MaterialState.selected);
+    final disabled = states.contains(MaterialState.disabled);
 
-    /// Enabled and selected
-    else if (states.contains(MaterialState.selected)) {
-      return darkColorScheme.primary;
-    }
-
-    /// Disabled and not selected
-    else if (states.contains(MaterialState.disabled)) {
-      return darkColorScheme.onSecondary;
-    }
-
-    /// Enabled and not selected (default color)
-    else {
-      return darkColorScheme.onSecondary;
-    }
+    return switch ((selected, disabled)) {
+      (true, true) => darkColorScheme.onSurface.withOpacity(0.38),
+      (true, false) => darkColorScheme.primary,
+      (false, true) => darkColorScheme.onSecondary,
+      (false, false) => darkColorScheme.onSecondary,
+    };
   }
 }
 

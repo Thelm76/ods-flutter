@@ -90,39 +90,38 @@ class _SnackBarsVariants extends StatelessWidget {
         Center(
           child: OdsButton(
             onClick: () {
-              if (customizationState?.hasTwoLines == false &&
-                  customizationState?.hasLongerAction == false) {
-                OdsSnackbar.showSnackbarSingleLine(
-                  context: context,
-                  message: OdsApplication.recipes[21].description,
-                  actionLabel: customizationState?.hasActionButton == true
-                      ? l10n.componentSnackbarsActionExampleButtonText
-                      : null,
-                  onPressed: customizationState?.hasActionButton == true
-                      ? () {}
-                      : null,
-                );
-              } else if (customizationState?.hasTwoLines == true &&
-                  customizationState?.hasLongerAction == false) {
-                OdsSnackbar.showSnackbarTwoLines(
-                  context: context,
-                  message: OdsApplication.recipes[7].description,
-                  actionLabel: customizationState?.hasActionButton == true
-                      ? l10n.componentSnackbarsActionExampleButtonText
-                      : null,
-                  onPressed: customizationState?.hasActionButton == true
-                      ? () {}
-                      : null,
-                );
-              }
-              if (customizationState?.hasLongerAction == true) {
-                OdsSnackbar.showSnackbarLongerAction(
+              if (customizationState == null) return;
+
+              if (customizationState.hasLongerAction) {
+                return OdsSnackbar.showSnackbarLongerAction(
                   context: context,
                   message: OdsApplication.recipes[7].description,
                   actionLabel: l10n.componentSnackbarsTwoLineLongerActionButton,
                   onPressed: () {},
                 );
               }
+
+              if (!customizationState.hasTwoLines) {
+                return OdsSnackbar.showSnackbarSingleLine(
+                  context: context,
+                  message: OdsApplication.recipes[21].description,
+                  actionLabel: customizationState.hasActionButton == true
+                      ? l10n.componentSnackbarsActionExampleButtonText
+                      : null,
+                  onPressed:
+                      customizationState.hasActionButton == true ? () {} : null,
+                );
+              }
+
+              OdsSnackbar.showSnackbarTwoLines(
+                context: context,
+                message: OdsApplication.recipes[7].description,
+                actionLabel: customizationState.hasActionButton == true
+                    ? l10n.componentSnackbarsActionExampleButtonText
+                    : null,
+                onPressed:
+                    customizationState.hasActionButton == true ? () {} : null,
+              );
             },
             text: l10n.componentSnackbarsDescriptionExampleButton,
             style: OdsButtonStyle.functionalPrimary,

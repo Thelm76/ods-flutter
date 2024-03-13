@@ -18,7 +18,14 @@ enum OdsImageShapeEnum {
   icon,
   circle,
   wide,
-  square,
+  square;
+
+  factory OdsImageShapeEnum.fromString(String? name) {
+    return OdsImageShapeEnum.values
+            .where((shape) => shape.name == name)
+            .singleOrNull ??
+        OdsImageShapeEnum.none;
+  }
 }
 
 class OdsImageShape {
@@ -33,64 +40,59 @@ class OdsImageShape {
     final activeColorFilter =
         ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
 
-    if (shape == OdsImageShapeEnum.none.name) {
-      return null;
-    } else if (shape == OdsImageShapeEnum.icon.name) {
-      return SvgPicture.asset(
-        url!,
-        fit: BoxFit.cover,
-        width: 55,
-        height: 45,
-        colorFilter: activeColorFilter,
-        placeholderBuilder: (context) => Image.asset(
-          'assets/placeholder.png',
+    return switch (OdsImageShapeEnum.fromString(shape)) {
+      OdsImageShapeEnum.none => null,
+      OdsImageShapeEnum.icon => SvgPicture.asset(
+          url!,
           fit: BoxFit.cover,
           width: 55,
           height: 45,
+          colorFilter: activeColorFilter,
+          placeholderBuilder: (context) => Image.asset(
+            'assets/placeholder.png',
+            fit: BoxFit.cover,
+            width: 55,
+            height: 45,
+          ),
         ),
-      );
-    } else if (shape == OdsImageShapeEnum.circle.name) {
-      return CircleAvatar(
-        backgroundImage: NetworkImage(url!),
-        radius: 25,
-      );
-    } else if (shape == OdsImageShapeEnum.wide.name) {
-      return FadeInImage(
-        placeholder: const AssetImage('assets/placeholder.png'),
-        image: NetworkImage(url!),
-        fit: BoxFit.cover,
-        alignment: Alignment.center,
-        width: 110,
-        height: 74,
-        imageErrorBuilder: (context, error, stackTrace) {
-          return const Image(
-            image: AssetImage('assets/placeholder.png'),
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-            width: 110,
-            height: 74,
-          );
-        },
-      );
-    } else if (shape == OdsImageShapeEnum.square.name) {
-      return FadeInImage(
-        placeholder: const AssetImage('assets/placeholder.png'),
-        image: NetworkImage(url!),
-        fit: BoxFit.cover,
-        alignment: Alignment.center,
-        width: 60,
-        height: 74,
-        imageErrorBuilder: (context, error, stackTrace) {
-          return const Image(
-            image: AssetImage('assets/placeholder.png'),
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
-            width: 60,
-            height: 74,
-          );
-        },
-      );
-    }
-    return null;
+      OdsImageShapeEnum.circle => CircleAvatar(
+          backgroundImage: NetworkImage(url!),
+          radius: 25,
+        ),
+      OdsImageShapeEnum.wide => FadeInImage(
+          placeholder: const AssetImage('assets/placeholder.png'),
+          image: NetworkImage(url!),
+          fit: BoxFit.cover,
+          alignment: Alignment.center,
+          width: 110,
+          height: 74,
+          imageErrorBuilder: (context, error, stackTrace) {
+            return const Image(
+              image: AssetImage('assets/placeholder.png'),
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+              width: 110,
+              height: 74,
+            );
+          },
+        ),
+      OdsImageShapeEnum.square => FadeInImage(
+          placeholder: const AssetImage('assets/placeholder.png'),
+          image: NetworkImage(url!),
+          fit: BoxFit.cover,
+          alignment: Alignment.center,
+          width: 60,
+          height: 74,
+          imageErrorBuilder: (context, error, stackTrace) {
+            return const Image(
+              image: AssetImage('assets/placeholder.png'),
+              fit: BoxFit.cover,
+              alignment: Alignment.center,
+              width: 60,
+              height: 74,
+            );
+          },
+        ),
+    };
   }
 }

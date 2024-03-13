@@ -68,34 +68,26 @@ class _BodyState extends State<_Body> {
     final FloatingActionButtonCustomizationState? customizationState =
         FloatingActionButtonCustomization.of(context);
 
-    Widget? fab;
-
-    if (customizationState?.selectedElement ==
-        FloatingActionButtonEnum.defaultFab) {
-      fab = OdsFloatingActionButton(
-        onClick: () {},
-        icon: const Icon(Icons.add),
-      );
-    } else if (customizationState?.selectedElement ==
-        FloatingActionButtonEnum.smallFab) {
-      fab = OdsSmallFloatingActionButton(
-        onClick: () {},
-        icon: const Icon(Icons.add),
-      );
-    } else if (customizationState?.selectedElement ==
-        FloatingActionButtonEnum.largeFab) {
-      fab = OdsLargeFloatingActionButton(
-        onClick: () {},
-        icon: const Icon(Icons.add),
-      );
-    } else if (customizationState?.selectedElement ==
-        FloatingActionButtonEnum.extendedFab) {
-      fab = OdsExtendedFloatingActionButton(
-        onClick: () {},
-        icon: customizationState?.hasIcon == true ? Icon(Icons.add) : null,
-        text: l10n.componentFloatingActionButtonSizeExtended,
-      );
-    }
+    final floatingActionButton = switch (customizationState?.selectedElement) {
+      null => null,
+      FloatingActionButtonEnum.defaultFab => OdsFloatingActionButton(
+          onClick: () {},
+          icon: const Icon(Icons.add),
+        ),
+      FloatingActionButtonEnum.smallFab => OdsSmallFloatingActionButton(
+          onClick: () {},
+          icon: const Icon(Icons.add),
+        ),
+      FloatingActionButtonEnum.largeFab => OdsLargeFloatingActionButton(
+          onClick: () {},
+          icon: const Icon(Icons.add),
+        ),
+      FloatingActionButtonEnum.extendedFab => OdsExtendedFloatingActionButton(
+          onClick: () {},
+          icon: customizationState!.hasIcon ? Icon(Icons.add) : null,
+          text: l10n.componentFloatingActionButtonSizeExtended,
+        ),
+    };
 
     return Scaffold(
       bottomSheet: Semantics(
@@ -107,7 +99,7 @@ class _BodyState extends State<_Body> {
       ),
       floatingActionButton: Semantics(
         sortKey: OrdinalSortKey(1.0),
-        child: fab,
+        child: floatingActionButton,
       ),
     );
   }

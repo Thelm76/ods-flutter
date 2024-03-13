@@ -88,15 +88,15 @@ class _BodyState extends State<_Body> {
               4,
               (int index) {
                 bool isSelected = selectedIndex == index;
-                OdsChipLeadingAvatar? avatar;
-                if (customizationState?.selectedElement == ChipsEnum.none) {
-                  avatar = null;
-                } else if (customizationState?.selectedElement ==
-                    ChipsEnum.avatar) {
-                  avatar = OdsChipLeadingAvatar(
-                    image: NetworkImage(OdsApplication.foods[index + 41].image),
-                  );
-                }
+                final avatar = switch (customizationState?.selectedElement) {
+                  null || ChipsEnum.none => null,
+                  ChipsEnum.avatar => OdsChipLeadingAvatar(
+                      image:
+                          NetworkImage(OdsApplication.foods[index + 41].image),
+                    ),
+                  // TODO(ods_team): Handle this case
+                  ChipsEnum.icon => null,
+                };
 
                 return OdsChoiceChip(
                   text: OdsApplication.foods[index + 41].name,

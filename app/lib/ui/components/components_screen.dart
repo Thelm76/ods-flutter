@@ -32,22 +32,14 @@ class _ComponentsScreenState extends State<ComponentsScreen> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    int crossAxisCount;
-    double childAspectRatio;
-
-    if (width >= 1024) {
-      /// Desktop && Tablet
-      crossAxisCount = 5;
-      childAspectRatio = 1.0;
-    } else if (width >= 640) {
-      /// Mobile Paysage
-      crossAxisCount = 3;
-      childAspectRatio = 0.9;
-    } else {
-      /// Mobile Portrait
-      crossAxisCount = 2;
-      childAspectRatio = 0.97;
-    }
+    final (crossAxisCount, childAspectRatio) = switch (width) {
+      // Desktop and tablet
+      >= 1024 => (5, 1.0),
+      // Mobile paysage
+      >= 640 => (3, 0.9),
+      // Mobile portrait
+      _ => (2, 0.97),
+    };
 
     return SafeArea(
       child: Padding(
