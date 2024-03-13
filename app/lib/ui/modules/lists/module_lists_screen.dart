@@ -80,26 +80,15 @@ class _BodyState extends State<_Body> {
         itemBuilder: (context, index) {
           final recipe = OdsApplication.recipes[index];
           bool isSelectionControl = selectionControls[index];
-          final String url;
-          switch (customizationState?.selectedLeadingElement) {
-            case ListLeadingEnum.icon:
-              url = recipe.getIconPath();
-              break;
-            case ListLeadingEnum.circle:
-              url = recipe.url;
-              break;
-            case ListLeadingEnum.square:
-              url = recipe.url;
-              break;
-            case ListLeadingEnum.wide:
-              url = recipe.url;
-              break;
-            case ListLeadingEnum.none:
+          final url = switch (customizationState?.selectedLeadingElement) {
+            ListLeadingEnum.icon => recipe.getIconPath(),
+            ListLeadingEnum.circle => recipe.url,
+            ListLeadingEnum.square => recipe.url,
+            ListLeadingEnum.wide => recipe.url,
+            ListLeadingEnum.none => null,
             // TODO: Handle this case.
-            case null:
-              url = recipe.url;
-              break;
-          }
+            null => null
+          };
 
           final odsImageShape = OdsImageShape(
               context, customizationState?.selectedLeadingElement.name, url);

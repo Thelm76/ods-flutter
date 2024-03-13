@@ -12,19 +12,16 @@
 
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
-enum ChipsEnum { none, avatar, icon }
+enum ChipsEnum {
+  none,
+  avatar,
+  icon;
 
-extension CustomElementExtension on ChipsEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case ChipsEnum.none:
-        return l10n.componentChipEnumNone;
-      case ChipsEnum.avatar:
-        return l10n.componentChipEnumAvatar;
-      case ChipsEnum.icon:
-        return l10n.componentChipEnumIcon;
-      default:
-        return "";
-    }
+    return switch (this) {
+      none => l10n.componentChipEnumNone,
+      avatar => l10n.componentChipEnumAvatar,
+      icon => l10n.componentChipEnumIcon,
+    };
   }
 }

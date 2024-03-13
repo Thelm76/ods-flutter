@@ -10,7 +10,6 @@
  * Software description: Flutter library of reusable graphical components for Android and iOS
  */
 
-import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ import 'package:ods_flutter/components/textfield/password/ods_password_text_fiel
 import 'package:ods_flutter/guidelines/spacings.dart';
 import 'package:ods_flutter_demo/l10n/l10n.dart';
 import 'package:ods_flutter_demo/main.dart';
-import 'package:ods_flutter_demo/ui/components/textfields/enum/keyboard_enum.dart';
 import 'package:ods_flutter_demo/ui/components/textfields/enum/textfield_enum.dart';
 import 'package:ods_flutter_demo/ui/components/textfields/textfield_customization.dart';
 import 'package:ods_flutter_demo/ui/theme/model_theme.dart';
@@ -102,69 +100,11 @@ class _BodyState extends State<_Body> {
     final TextFieldCustomizationState? customizationState =
         TextFieldCustomization.of(context);
     final TextEditingController controllerTextField = TextEditingController();
-    final TextInputType? keyboardType;
-    TextInputAction? keyboardAction;
 
-    ///Keyboard type
-    switch (customizationState?.selectedKeyboardType) {
-      case KeyboardTypeEnum.text:
-        keyboardType = TextInputType.text;
-        break;
-      case KeyboardTypeEnum.decimal:
-        keyboardType = TextInputType.datetime;
-        break;
-      case KeyboardTypeEnum.email:
-        keyboardType = TextInputType.emailAddress;
-        break;
-      case KeyboardTypeEnum.number:
-        keyboardType = TextInputType.number;
-        break;
-      case KeyboardTypeEnum.phone:
-        keyboardType = TextInputType.phone;
-        break;
-      case KeyboardTypeEnum.url:
-        keyboardType = TextInputType.url;
-        break;
-      default:
-        keyboardType = TextInputType.text;
-    }
+    final keyboardType = customizationState?.selectedKeyboardType.inputType;
 
-    ///Keyboard action
-    switch (customizationState?.selectedKeyboardAction) {
-      case KeyboardActionEnum.none:
-      case null:
-        if (Platform.isAndroid) {
-          keyboardAction = TextInputAction.none;
-        } else if (Platform.isIOS) {
-          keyboardAction = TextInputAction.unspecified;
-        }
-        break;
-      case KeyboardActionEnum.defaultAction:
-        keyboardAction = TextInputAction.send;
-        break;
-      case KeyboardActionEnum.done:
-        keyboardAction = TextInputAction.done;
-        break;
-      case KeyboardActionEnum.go:
-        keyboardAction = TextInputAction.go;
-        break;
-      case KeyboardActionEnum.search:
-        keyboardAction = TextInputAction.search;
-        break;
-      case KeyboardActionEnum.send:
-        keyboardAction = TextInputAction.send;
-        break;
-      case KeyboardActionEnum.previous:
-        if (Platform.isAndroid) {
-          keyboardAction = TextInputAction.previous;
-        }
-        break;
-      case KeyboardActionEnum.next:
-        keyboardAction = TextInputAction.next;
-        break;
-      case null:
-        break;
-    }
+    final keyboardAction =
+        customizationState?.selectedKeyboardAction.inputAction;
 
     return Padding(
       padding: const EdgeInsets.all(spacingS),

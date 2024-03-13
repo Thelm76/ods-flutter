@@ -21,20 +21,14 @@ enum ButtonsEnum {
   functionalPositive,
   functionalNegative,
   functionalPrimary,
-  functionalDefault,
-}
+  functionalDefault;
 
-extension CustomElementExtension on ButtonsEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case ButtonsEnum.functionalPositive:
-        return l10n.buttonsFunctionalPositiveEnum;
-      case ButtonsEnum.functionalNegative:
-        return l10n.buttonsFunctionalNegativeEnum;
-      case ButtonsEnum.functionalDefault:
-        return l10n.buttonsTextFunctionalDefaultEnum;
-      case ButtonsEnum.functionalPrimary:
-        return l10n.buttonsTextFunctionalPrimaryEnum;
-    }
+    return switch (this) {
+      functionalPositive => l10n.buttonsFunctionalPositiveEnum,
+      functionalNegative => l10n.buttonsFunctionalNegativeEnum,
+      functionalDefault => l10n.buttonsTextFunctionalDefaultEnum,
+      functionalPrimary => l10n.buttonsTextFunctionalPrimaryEnum
+    };
   }
 }

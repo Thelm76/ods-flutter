@@ -17,16 +17,12 @@ import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 /// * [multi] - Multi select segmented button.
 enum SegmentedButtonsEnum {
   single,
-  multi,
-}
+  multi;
 
-extension CustomElementExtension on SegmentedButtonsEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case SegmentedButtonsEnum.single:
-        return l10n.segmentedEnumSingle;
-      case SegmentedButtonsEnum.multi:
-        return l10n.segmentedEnumMulti;
-    }
+    return switch (this) {
+      single => l10n.segmentedEnumSingle,
+      multi => l10n.segmentedEnumMulti
+    };
   }
 }

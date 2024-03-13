@@ -12,45 +12,42 @@
 
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
-enum TextFieldEnum { single, multi }
+enum TextFieldEnum {
+  single,
+  multi;
 
-enum TextFieldStateEnum { stateDefault, error, disabled }
-
-enum TextFieldTrailingEnum { none, icon, text }
-
-extension CustomElementExtension on TextFieldEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case TextFieldEnum.single:
-        return l10n.componentTextFieldInputTypeSingleLine;
-      case TextFieldEnum.multi:
-        return l10n.componentTextFieldInputTypeMultiline;
-    }
+    return switch (this) {
+      single => l10n.componentTextFieldInputTypeSingleLine,
+      multi => l10n.componentTextFieldInputTypeMultiline
+    };
   }
 }
 
-extension CustomStateExtension on TextFieldStateEnum {
+enum TextFieldStateEnum {
+  stateDefault,
+  error,
+  disabled;
+
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case TextFieldStateEnum.stateDefault:
-        return l10n.componentStateDefault;
-      case TextFieldStateEnum.disabled:
-        return l10n.componentStateDisabled;
-      case TextFieldStateEnum.error:
-        return l10n.componentStateError;
-    }
+    return switch (this) {
+      stateDefault => l10n.componentStateDefault,
+      disabled => l10n.componentStateDisabled,
+      error => l10n.componentStateError
+    };
   }
 }
 
-extension CustomTrailingExtension on TextFieldTrailingEnum {
+enum TextFieldTrailingEnum {
+  none,
+  icon,
+  text;
+
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case TextFieldTrailingEnum.none:
-        return l10n.componentElementNone;
-      case TextFieldTrailingEnum.icon:
-        return l10n.componentElementIcon;
-      case TextFieldTrailingEnum.text:
-        return l10n.componentElementText;
-    }
+    return switch (this) {
+      none => l10n.componentElementNone,
+      icon => l10n.componentElementIcon,
+      text => l10n.componentElementText
+    };
   }
 }

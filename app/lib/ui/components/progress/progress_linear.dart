@@ -58,15 +58,11 @@ class _BodyState extends State<_Body> {
     final ProgressCustomizationState? customizationState =
         ProgressCustomization.of(context);
 
-    double? currentProgressValue;
-    switch (customizationState?.selectedProgressType ?? "") {
-      case ProgressEnum.determinate:
-        currentProgressValue = 0.9;
-        break;
-      case ProgressEnum.indeterminate:
-        currentProgressValue = null;
-        break;
-    }
+    final currentProgressValue = switch (
+        customizationState?.selectedProgressType) {
+      ProgressEnum.determinate => 0.9,
+      ProgressEnum.indeterminate || null => null
+    };
 
     return SingleChildScrollView(
       child: Center(

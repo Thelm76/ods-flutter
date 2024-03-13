@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ods_flutter/components/button/segmented/button_icon/ods_button_icon.dart';
+import 'package:ods_flutter/components/button/segmented/button_icon/ods_button_icon_style_enum.dart';
 import 'package:ods_flutter/components/chips/ods_choice_chips.dart';
 import 'package:ods_flutter/components/floating_action_button/ods_fab.dart';
 import 'package:ods_flutter/components/lists/ods_list_switch.dart';
@@ -94,7 +95,7 @@ class _NavRailDemoState extends State<_NavRailDemo> {
       case null:
         firstIcon = null;
         secondIcon = null;
-        break;
+
       case NavigationRailsEnum.firstIcon:
         firstIcon = OdsButtonIcon(
           icon: Icon(Icons.menu),
@@ -108,7 +109,7 @@ class _NavRailDemoState extends State<_NavRailDemo> {
           },
         );
         secondIcon = null;
-        break;
+
       case NavigationRailsEnum.secondIcon:
         firstIcon = OdsButtonIcon(
           icon: Icon(Icons.menu),
@@ -126,9 +127,6 @@ class _NavRailDemoState extends State<_NavRailDemo> {
           icon: const Icon(Icons.person),
           semanticsLabel: 'Add', //Optional
         );
-        break;
-      case null:
-        break;
     }
 
     return Row(
@@ -149,7 +147,7 @@ class _NavRailDemoState extends State<_NavRailDemo> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                getScreen(selectedIndex),
+                _getScreen(selectedIndex),
               ),
             ],
           ),
@@ -158,21 +156,15 @@ class _NavRailDemoState extends State<_NavRailDemo> {
     );
   }
 
-  String getScreen(int number) {
-    switch (number) {
-      case 0:
-        return "Cooking";
-      case 1:
-        return "Coffee";
-      case 2:
-        return "Ice Cream";
-      case 3:
-        return "Restaurant";
-      case 4:
-        return "Favorites";
-      default:
-        return "";
-    }
+  String _getScreen(int number) {
+    return switch (number) {
+      0 => "Cooking",
+      1 => "Coffee",
+      2 => "Ice Cream",
+      3 => "Restaurant",
+      4 => "Favorites",
+      _ => ""
+    };
   }
 
   List<OdsNavigationRailItem> _destinations(BuildContext context) {

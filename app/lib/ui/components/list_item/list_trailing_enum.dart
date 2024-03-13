@@ -17,24 +17,15 @@ enum ListTrailingEnum {
   trailingSwitch,
   trailingCheckbox,
   trailingText,
-  trailingInfoButton,
-}
+  trailingInfoButton;
 
-extension CustomElementExtension on ListTrailingEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case ListTrailingEnum.none:
-        return l10n.listTrailingEnumNone;
-      case ListTrailingEnum.trailingSwitch:
-        return l10n.listTrailingEnumSwitch;
-      case ListTrailingEnum.trailingCheckbox:
-        return l10n.listTrailingEnumCheckbox;
-      case ListTrailingEnum.trailingText:
-        return l10n.listTrailingEnumText;
-      case ListTrailingEnum.trailingInfoButton:
-        return l10n.listTrailingEnumInfoButton;
-      default:
-        return "";
-    }
+    return switch (this) {
+      ListTrailingEnum.none => l10n.listTrailingEnumNone,
+      ListTrailingEnum.trailingSwitch => l10n.listTrailingEnumSwitch,
+      ListTrailingEnum.trailingCheckbox => l10n.listTrailingEnumCheckbox,
+      ListTrailingEnum.trailingText => l10n.listTrailingEnumText,
+      ListTrailingEnum.trailingInfoButton => l10n.listTrailingEnumInfoButton,
+    };
   }
 }

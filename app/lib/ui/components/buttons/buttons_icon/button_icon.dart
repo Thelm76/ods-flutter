@@ -66,9 +66,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ButtonIconCustomizationState? customizationState =
-        ButtonIconCustomization.of(context);
-    final style = _determineButtonIconStyle(customizationState?.selectedStyle);
+    final customizationState = ButtonIconCustomization.of(context);
 
     return Center(
       child: Padding(
@@ -84,9 +82,9 @@ class _BodyState extends State<_Body> {
               selectedIcon: Image.asset(
                 'assets/ic_heart_selected.png',
               ),
-              style: style,
+              style: customizationState!.selectedStyle.iconStyle,
               isSelected: selected,
-              isEnabled: customizationState!.hasEnabled,
+              isEnabled: customizationState.hasEnabled,
               onClick: () {
                 setState(() {
                   selected = !selected;
@@ -97,21 +95,6 @@ class _BodyState extends State<_Body> {
         ),
       ),
     );
-  }
-
-  OdsButtonIconStyle _determineButtonIconStyle(ButtonsIconEnum? selectedStyle) {
-    switch (selectedStyle) {
-      case ButtonsIconEnum.functionalStandard:
-        return OdsButtonIconStyle.functionalStandard;
-      case ButtonsIconEnum.functionalFilled:
-        return OdsButtonIconStyle.functionalFilled;
-      case ButtonsIconEnum.functionalTonal:
-        return OdsButtonIconStyle.functionalTonal;
-      case ButtonsIconEnum.functionalOutlined:
-        return OdsButtonIconStyle.functionalOutlined;
-      default:
-        throw ArgumentError('Selected style not supported: $selectedStyle');
-    }
   }
 }
 

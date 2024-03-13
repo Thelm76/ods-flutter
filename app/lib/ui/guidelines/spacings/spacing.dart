@@ -19,84 +19,54 @@ enum Spacing {
   m,
   l,
   xl,
-  xxl,
-}
+  xxl;
 
-extension SpacingProperties on Spacing {
   double get rawValue {
-    switch (this) {
-      case Spacing.none:
-        return spacingNone;
-      case Spacing.xs:
-        return spacingXs;
-      case Spacing.s:
-        return spacingS;
-      case Spacing.m:
-        return spacingM;
-      case Spacing.l:
-        return spacingL;
-      case Spacing.xl:
-        return spacingXl;
-      case Spacing.xxl:
-        return spacingXxl;
-    }
+    return switch (this) {
+      none => spacingNone,
+      xs => spacingXs,
+      s => spacingS,
+      m => spacingM,
+      l => spacingL,
+      xl => spacingXl,
+      xxl => spacingXxl
+    };
   }
 
   String get name {
-    switch (this) {
-      case Spacing.none:
-        return "spacingNone";
-      case Spacing.xs:
-        return "spacingXs";
-      case Spacing.s:
-        return "spacingS";
-      case Spacing.m:
-        return "spacingM";
-      case Spacing.l:
-        return "spacingL";
-      case Spacing.xl:
-        return "spacingXl";
-      case Spacing.xxl:
-        return "spacingXxl";
-    }
+    return switch (this) {
+      none => "spacingNone",
+      xs => "spacingXs",
+      s => "spacingS",
+      m => "spacingM",
+      l => "spacingL",
+      xl => "spacingXl",
+      xxl => "spacingXxl"
+    };
   }
 
   String get ratio {
-    switch (this) {
-      case Spacing.none:
-        return "Ratio -";
-      case Spacing.xs:
-        return "Ratio 0.5";
-      case Spacing.s:
-        return "Ratio 1";
-      case Spacing.m:
-        return "Ratio 2";
-      case Spacing.l:
-        return "Ratio 3";
-      case Spacing.xl:
-        return "Ratio 4";
-      case Spacing.xxl:
-        return "Ratio 5";
-    }
+    return switch (this) {
+      none => "Ratio -",
+      xs => "Ratio 0.5",
+      s => "Ratio 1",
+      m => "Ratio 2",
+      l => "Ratio 3",
+      xl => "Ratio 4",
+      xxl => "Ratio 5"
+    };
   }
 
   String get ratioSpokenValue {
-    switch (this) {
-      case Spacing.none:
-        return "0";
-      case Spacing.xs:
-        return "0.5";
-      case Spacing.s:
-        return "1";
-      case Spacing.m:
-        return "2";
-      case Spacing.l:
-        return "3";
-      case Spacing.xl:
-        return "4";
-      case Spacing.xxl:
-        return "5";
-    }
+    return switch (this) {
+      none => "0",
+      xs => "0.5",
+      s => "1",
+      m => "2",
+      l => "3",
+      xl => "4",
+      xxl => "5"
+    };
   }
 
   String get accessibilityLabel {

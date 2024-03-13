@@ -12,15 +12,14 @@
 
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
-enum SheetsBottomEnum { empty, example }
+enum SheetsBottomEnum {
+  empty,
+  example;
 
-extension CustomElementExtension on SheetsBottomEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case SheetsBottomEnum.empty:
-        return l10n.sheetsBottomEnumEmpty;
-      case SheetsBottomEnum.example:
-        return l10n.sheetsBottomEnumExample;
-    }
+    return switch (this) {
+      SheetsBottomEnum.empty => l10n.sheetsBottomEnumEmpty,
+      SheetsBottomEnum.example => l10n.sheetsBottomEnumExample
+    };
   }
 }

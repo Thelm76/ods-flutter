@@ -10,6 +10,7 @@
  * Software description: Flutter library of reusable graphical components for Android and iOS
  */
 
+import 'package:ods_flutter/components/button/segmented/button_icon/ods_button_icon_style_enum.dart';
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
 ///Button Icon
@@ -21,20 +22,23 @@ enum ButtonsIconEnum {
   functionalStandard,
   functionalFilled,
   functionalTonal,
-  functionalOutlined,
-}
+  functionalOutlined;
 
-extension CustomElementExtension on ButtonsIconEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case ButtonsIconEnum.functionalStandard:
-        return l10n.buttonsIconFunctionalStandardEnum;
-      case ButtonsIconEnum.functionalFilled:
-        return l10n.buttonsIconFunctionalFilledEnum;
-      case ButtonsIconEnum.functionalTonal:
-        return l10n.buttonsIconFunctionalTonalEnum;
-      case ButtonsIconEnum.functionalOutlined:
-        return l10n.buttonsIconFunctionalOutlinedEnum;
-    }
+    return switch (this) {
+      functionalStandard => l10n.buttonsIconFunctionalStandardEnum,
+      functionalFilled => l10n.buttonsIconFunctionalFilledEnum,
+      functionalTonal => l10n.buttonsIconFunctionalTonalEnum,
+      functionalOutlined => l10n.buttonsIconFunctionalOutlinedEnum
+    };
+  }
+
+  OdsButtonIconStyle get iconStyle {
+    return switch (this) {
+      functionalStandard => OdsButtonIconStyle.functionalStandard,
+      functionalFilled => OdsButtonIconStyle.functionalFilled,
+      functionalTonal => OdsButtonIconStyle.functionalTonal,
+      functionalOutlined => OdsButtonIconStyle.functionalOutlined,
+    };
   }
 }

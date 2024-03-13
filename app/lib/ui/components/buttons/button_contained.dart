@@ -26,7 +26,13 @@ import 'package:ods_flutter_demo/ui/main_app_bar.dart';
 enum ButtonEmphasis {
   highEmphasis,
   mediumEmphasis,
-  functional,
+  functional;
+
+  String stringValue(AppLocalizations l10n) => switch (this) {
+        highEmphasis => l10n.buttonsHighEmphasisVariantTitle,
+        mediumEmphasis => l10n.buttonsMediumEmphasisVariantTitle,
+        functional => l10n.buttonsFunctionalVariantTitle,
+      };
 }
 
 class ButtonsContained extends StatefulWidget {
@@ -51,21 +57,10 @@ class _ButtonsContainedState extends State<ButtonsContained> {
           sheetContent: _CustomizationContent(emphasis: widget.emphasis),
           title: l10n.componentCustomizeTitle,
         ),
-        appBar: MainAppBar(_getAppBarTitle(l10n)),
+        appBar: MainAppBar(widget.emphasis.stringValue(l10n)),
         body: SafeArea(child: _Body(emphasis: widget.emphasis)),
       ),
     );
-  }
-
-  String _getAppBarTitle(AppLocalizations l10n) {
-    switch (widget.emphasis) {
-      case ButtonEmphasis.highEmphasis:
-        return l10n.buttonsHighEmphasisVariantTitle;
-      case ButtonEmphasis.mediumEmphasis:
-        return l10n.buttonsMediumEmphasisVariantTitle;
-      case ButtonEmphasis.functional:
-        return l10n.buttonsFunctionalVariantTitle;
-    }
   }
 }
 

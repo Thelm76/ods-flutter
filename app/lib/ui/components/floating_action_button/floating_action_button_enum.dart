@@ -12,19 +12,18 @@
 
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
-enum FloatingActionButtonEnum { defaultFab, smallFab, largeFab, extendedFab }
+enum FloatingActionButtonEnum {
+  defaultFab,
+  smallFab,
+  largeFab,
+  extendedFab;
 
-extension CustomElementExtension on FloatingActionButtonEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case FloatingActionButtonEnum.defaultFab:
-        return l10n.componentFloatingActionButtonSizeDefault;
-      case FloatingActionButtonEnum.smallFab:
-        return l10n.componentFloatingActionButtonSizeSmall;
-      case FloatingActionButtonEnum.largeFab:
-        return l10n.componentFloatingActionButtonSizeLarge;
-      case FloatingActionButtonEnum.extendedFab:
-        return l10n.componentFloatingActionButtonSizeExtended;
-    }
+    return switch (this) {
+      defaultFab => l10n.componentFloatingActionButtonSizeDefault,
+      smallFab => l10n.componentFloatingActionButtonSizeSmall,
+      largeFab => l10n.componentFloatingActionButtonSizeLarge,
+      extendedFab => l10n.componentFloatingActionButtonSizeExtended
+    };
   }
 }

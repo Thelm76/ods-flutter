@@ -10,9 +10,40 @@
  * Software description: Flutter library of reusable graphical components for Android and iOS
  */
 
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
-enum KeyboardTypeEnum { text, decimal, email, number, phone, url }
+enum KeyboardTypeEnum {
+  text,
+  decimal,
+  email,
+  number,
+  phone,
+  url;
+
+  String stringValue(AppLocalizations l10n) {
+    return switch (this) {
+      text => l10n.componentTextFieldKeyboardTypeText,
+      decimal => l10n.componentTextFieldKeyboardTypeDecimal,
+      email => l10n.componentTextFieldKeyboardTypeEmail,
+      number => l10n.componentTextFieldKeyboardTypeNumber,
+      phone => l10n.componentTextFieldKeyboardTypePhone,
+      url => l10n.componentTextFieldKeyboardTypeUrl
+    };
+  }
+
+  TextInputType get inputType => switch (this) {
+        text => TextInputType.text,
+        decimal => TextInputType.datetime,
+        email => TextInputType.emailAddress,
+        number => TextInputType.number,
+        phone => TextInputType.phone,
+        url => TextInputType.url,
+      };
+}
 
 enum KeyboardActionEnum {
   none,
@@ -22,47 +53,33 @@ enum KeyboardActionEnum {
   search,
   send,
   previous,
-  next
-}
+  next;
 
-extension CustomElementExtension on KeyboardTypeEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case KeyboardTypeEnum.text:
-        return l10n.componentTextFieldKeyboardTypeText;
-      case KeyboardTypeEnum.decimal:
-        return l10n.componentTextFieldKeyboardTypeDecimal;
-      case KeyboardTypeEnum.email:
-        return l10n.componentTextFieldKeyboardTypeEmail;
-      case KeyboardTypeEnum.number:
-        return l10n.componentTextFieldKeyboardTypeNumber;
-      case KeyboardTypeEnum.phone:
-        return l10n.componentTextFieldKeyboardTypePhone;
-      case KeyboardTypeEnum.url:
-        return l10n.componentTextFieldKeyboardTypeUrl;
-    }
+    return switch (this) {
+      none => l10n.componentTextFieldKeyboardActionNone,
+      defaultAction => l10n.componentTextFieldKeyboardActionDefault,
+      done => l10n.componentTextFieldKeyboardActionDone,
+      go => l10n.componentTextFieldKeyboardActionGo,
+      search => l10n.componentTextFieldKeyboardActionSearch,
+      send => l10n.componentTextFieldKeyboardActionSend,
+      previous => l10n.componentTextFieldKeyboardActionPrevious,
+      next => l10n.componentTextFieldKeyboardActionNext
+    };
   }
-}
 
-extension CustomKeyboardActionExtension on KeyboardActionEnum {
-  String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case KeyboardActionEnum.none:
-        return l10n.componentTextFieldKeyboardActionNone;
-      case KeyboardActionEnum.defaultAction:
-        return l10n.componentTextFieldKeyboardActionDefault;
-      case KeyboardActionEnum.done:
-        return l10n.componentTextFieldKeyboardActionDone;
-      case KeyboardActionEnum.go:
-        return l10n.componentTextFieldKeyboardActionGo;
-      case KeyboardActionEnum.search:
-        return l10n.componentTextFieldKeyboardActionSearch;
-      case KeyboardActionEnum.send:
-        return l10n.componentTextFieldKeyboardActionSend;
-      case KeyboardActionEnum.previous:
-        return l10n.componentTextFieldKeyboardActionPrevious;
-      case KeyboardActionEnum.next:
-        return l10n.componentTextFieldKeyboardActionNext;
-    }
-  }
+  TextInputAction get inputAction => switch (this) {
+        none => kIsWeb || Platform.isAndroid
+            ? TextInputAction.none
+            : TextInputAction.unspecified,
+        defaultAction => TextInputAction.send,
+        done => TextInputAction.done,
+        go => TextInputAction.go,
+        search => TextInputAction.search,
+        send => TextInputAction.send,
+        previous => kIsWeb || Platform.isAndroid
+            ? TextInputAction.previous
+            : TextInputAction.unspecified,
+        next => TextInputAction.next,
+      };
 }

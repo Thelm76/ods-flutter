@@ -14,16 +14,12 @@ import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
 enum ProgressEnum {
   determinate,
-  indeterminate,
-}
+  indeterminate;
 
-extension CustomElementExtension on ProgressEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case ProgressEnum.determinate:
-        return l10n.progressTypeDeterminateEnum;
-      case ProgressEnum.indeterminate:
-        return l10n.progressTypeIndeterminateEnum;
-    }
+    return switch (this) {
+      determinate => l10n.progressTypeDeterminateEnum,
+      indeterminate => l10n.progressTypeIndeterminateEnum
+    };
   }
 }

@@ -12,21 +12,20 @@
 
 import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 
-enum ListLeadingEnum { none, icon, circle, wide, square }
+enum ListLeadingEnum {
+  none,
+  icon,
+  circle,
+  wide,
+  square;
 
-extension CustomElementExtension on ListLeadingEnum {
   String stringValue(AppLocalizations l10n) {
-    switch (this) {
-      case ListLeadingEnum.none:
-        return l10n.listLeadingEnumNone;
-      case ListLeadingEnum.icon:
-        return l10n.listLeadingEnumIcon;
-      case ListLeadingEnum.circle:
-        return l10n.listLeadingEnumCircle;
-      case ListLeadingEnum.wide:
-        return l10n.listLeadingEnumWide;
-      case ListLeadingEnum.square:
-        return l10n.listLeadingEnumSquare;
-    }
+    return switch (this) {
+      ListLeadingEnum.none => l10n.listLeadingEnumNone,
+      ListLeadingEnum.icon => l10n.listLeadingEnumIcon,
+      ListLeadingEnum.circle => l10n.listLeadingEnumCircle,
+      ListLeadingEnum.wide => l10n.listLeadingEnumWide,
+      ListLeadingEnum.square => l10n.listLeadingEnumSquare
+    };
   }
 }
