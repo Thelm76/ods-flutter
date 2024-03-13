@@ -170,8 +170,7 @@ class _NavRailDemoState extends State<_NavRailDemo> {
   List<OdsNavigationRailItem> _destinations(BuildContext context) {
     final l10n = context.l10n;
 
-    final NavigationRailCustomizationState? customizationState =
-        NavigationRailCustomization.of(context);
+    final customizationState = NavigationRailCustomization.of(context);
     return [
       OdsNavigationRailItem(
         context: context,
@@ -216,8 +215,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final NavigationRailCustomizationState? customizationState =
-        NavigationRailCustomization.of(context);
+    final customizationState = NavigationRailCustomization.of(context);
 
     return Column(
       children: [

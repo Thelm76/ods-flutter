@@ -71,8 +71,7 @@ class __BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final MenuCustomizationState? customizationState =
-        MenuCustomization.of(context);
+    final customizationState = MenuCustomization.of(context);
 
     Color? colorIconEnabled = Theme.of(context).brightness == Brightness.dark
         ? Colors.grey[600]
@@ -176,8 +175,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final MenuCustomizationState? customizationState =
-        MenuCustomization.of(context);
+    final customizationState = MenuCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

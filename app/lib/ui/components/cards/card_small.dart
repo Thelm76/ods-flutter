@@ -61,8 +61,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final CardCustomizationState? customizationState =
-        CardCustomization.of(context);
+    final customizationState = CardCustomization.of(context);
 
     return SafeArea(
       child: OrientationBuilder(
@@ -101,8 +100,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final CardCustomizationState? customizationState =
-        CardCustomization.of(context);
+    final customizationState = CardCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

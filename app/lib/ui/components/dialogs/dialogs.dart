@@ -57,8 +57,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final DialogsCustomizationState? customizationState =
-        DialogsCustomization.of(context);
+    final customizationState = DialogsCustomization.of(context);
     final recipe = OdsApplication.recipes[Random().nextInt(
       OdsApplication.recipes.length,
     )];
@@ -138,8 +137,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final DialogsCustomizationState? customizationState =
-        DialogsCustomization.of(context);
+    final customizationState = DialogsCustomization.of(context);
 
     return Column(
       children: [

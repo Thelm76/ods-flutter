@@ -73,8 +73,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ButtonCustomizationState? customizationState =
-        ButtonCustomization.of(context);
+    final customizationState = ButtonCustomization.of(context);
 
     final functionalStyle = customizationState != null
         ? (customizationState.selectedFunctionalType ==
@@ -127,8 +126,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ButtonCustomizationState? customizationState =
-        ButtonCustomization.of(context);
+    final customizationState = ButtonCustomization.of(context);
     return Column(
       children: [
         if (ButtonEmphasis.functional == widget.emphasis)

@@ -65,8 +65,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final FloatingActionButtonCustomizationState? customizationState =
-        FloatingActionButtonCustomization.of(context);
+    final customizationState = FloatingActionButtonCustomization.of(context);
 
     final floatingActionButton = switch (customizationState?.selectedElement) {
       null => null,
@@ -118,8 +117,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final FloatingActionButtonCustomizationState? customizationState =
-        FloatingActionButtonCustomization.of(context);
+    final customizationState = FloatingActionButtonCustomization.of(context);
     return SafeArea(
       child: Column(
         children: [

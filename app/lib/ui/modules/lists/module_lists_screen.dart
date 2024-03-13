@@ -70,8 +70,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ListCustomizationState? customizationState =
-        ListCustomization.of(context);
+    final customizationState = ListCustomization.of(context);
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -151,8 +150,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ListCustomizationState? customizationState =
-        ListCustomization.of(context);
+    final customizationState = ListCustomization.of(context);
     return SafeArea(
       child: Column(
         children: [

@@ -55,8 +55,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ComponentTopAppBarsCustomizationState? customizationState =
-        ComponentTopAppBarsCustomization.of(context);
+    final customizationState = ComponentTopAppBarsCustomization.of(context);
 
     final actions = [
       IconButton(icon: const Icon(Icons.color_lens), onPressed: () {}),
@@ -110,8 +109,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ComponentTopAppBarsCustomizationState? customizationState =
-        ComponentTopAppBarsCustomization.of(context);
+    final customizationState = ComponentTopAppBarsCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

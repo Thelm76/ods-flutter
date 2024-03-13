@@ -71,8 +71,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ListCustomizationState? customizationState =
-        ListCustomization.of(context);
+    final customizationState = ListCustomization.of(context);
 
     final colorScheme = Theme.of(context).colorScheme;
 
@@ -139,7 +138,7 @@ class _BodyState extends State<_Body> {
     final recipe = OdsApplication.recipes[0];
     bool isSelectionControl = selectionControls[0];
 
-    final String url = switch (customizationState?.selectedLeadingElement) {
+    final url = switch (customizationState?.selectedLeadingElement) {
       ListLeadingEnum.icon => recipe.getIconPath(),
       ListLeadingEnum.circle => recipe.url,
       ListLeadingEnum.square => recipe.url,
@@ -211,8 +210,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ListCustomizationState? customizationState =
-        ListCustomization.of(context);
+    final customizationState = ListCustomization.of(context);
     return SafeArea(
       child: Column(
         children: [

@@ -64,8 +64,7 @@ class __BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final RadioButtonsCustomizationState? customizationState =
-        RadioButtonsCustomization.of(context);
+    final customizationState = RadioButtonsCustomization.of(context);
 
     return Center(
       child: Column(
@@ -109,8 +108,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final RadioButtonsCustomizationState? customizationState =
-        RadioButtonsCustomization.of(context);
+    final customizationState = RadioButtonsCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

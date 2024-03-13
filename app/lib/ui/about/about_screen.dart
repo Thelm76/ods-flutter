@@ -41,7 +41,7 @@ class _AboutScreenState extends State<AboutScreen> {
   }
 
   Future<void> _initPackageInfo() async {
-    final PackageInfo info = await PackageInfo.fromPlatform();
+    final info = await PackageInfo.fromPlatform();
     setState(() {
       _packageInfo = info;
     });

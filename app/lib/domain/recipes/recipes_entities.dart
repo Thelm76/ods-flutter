@@ -39,7 +39,7 @@ class Entity {
         "foods": List<dynamic>.from(foods.map((x) => x.toJson())),
       };
 
-  static final Map<String, String> iconPaths = {
+  static final iconPaths = {
     "Restaurant": 'assets/recipes/ic_restaurant.svg',
     "CookingPot": 'assets/recipes/ic_cooking_pot.svg',
     "IceCream": 'assets/recipes/ic_ice_cream.svg',

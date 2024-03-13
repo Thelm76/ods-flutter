@@ -53,8 +53,7 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final SlidersCustomizationState? customizationState =
-        SlidersCustomization.of(context);
+    final customizationState = SlidersCustomization.of(context);
 
     return SingleChildScrollView(
       child: Padding(
@@ -86,8 +85,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final SlidersCustomizationState? customizationState =
-        SlidersCustomization.of(context);
+    final customizationState = SlidersCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

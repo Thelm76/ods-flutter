@@ -73,8 +73,7 @@ class _NavBarDemoState extends State<_NavBarDemo> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final NavigationBarCustomizationState? customizationState =
-        NavigationBarCustomization.of(context);
+    final customizationState = NavigationBarCustomization.of(context);
 
     List<OdsNavigationItem> navigationDestinations =
         _destinations(context).sublist(0, customizationState?.numberOfItems);
@@ -131,8 +130,7 @@ class _NavBarDemoState extends State<_NavBarDemo> {
   List<OdsNavigationItem> _destinations(BuildContext context) {
     final l10n = context.l10n;
 
-    final NavigationBarCustomizationState? customizationState =
-        NavigationBarCustomization.of(context);
+    final customizationState = NavigationBarCustomization.of(context);
     return [
       OdsNavigationItem(
         context: context,
@@ -172,8 +170,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final NavigationBarCustomizationState? customizationState =
-        NavigationBarCustomization.of(context);
+    final customizationState = NavigationBarCustomization.of(context);
     return Column(
       children: [
         ComponentCountRow(

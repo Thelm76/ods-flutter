@@ -66,8 +66,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final CardCustomizationState? customizationState =
-        CardCustomization.of(context);
+    final customizationState = CardCustomization.of(context);
 
     List<Widget> listButtons = [
       OdsTextButton(
@@ -138,8 +137,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final CardCustomizationState? customizationState =
-        CardCustomization.of(context);
+    final customizationState = CardCustomization.of(context);
     return SafeArea(
       child: Column(
         children: [

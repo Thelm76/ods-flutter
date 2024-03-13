@@ -25,7 +25,7 @@ class ThemeSelector extends StatefulWidget {
 class _ThemeSelectorState extends State<ThemeSelector> {
   String themeValue = ThemeMode.system.toString();
 
-  final Map<String, IconData> themeIcons = {
+  final themeIcons = {
     ThemeMode.light.toString(): Icons.wb_sunny,
     ThemeMode.dark.toString(): Icons.nightlight_round,
     ThemeMode.system.toString(): Icons.circle_sharp,

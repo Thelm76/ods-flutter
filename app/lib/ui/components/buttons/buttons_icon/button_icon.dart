@@ -117,8 +117,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ButtonIconCustomizationState? customizationState =
-        ButtonIconCustomization.of(context);
+    final customizationState = ButtonIconCustomization.of(context);
 
     return Column(
       children: [

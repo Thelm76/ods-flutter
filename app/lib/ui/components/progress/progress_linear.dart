@@ -55,8 +55,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ProgressCustomizationState? customizationState =
-        ProgressCustomization.of(context);
+    final customizationState = ProgressCustomization.of(context);
 
     final currentProgressValue = switch (
         customizationState?.selectedProgressType) {
@@ -97,8 +96,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ProgressCustomizationState? customizationState =
-        ProgressCustomization.of(context);
+    final customizationState = ProgressCustomization.of(context);
     return Column(
       children: [
         Align(

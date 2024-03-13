@@ -41,8 +41,8 @@ class OdsApplication extends StatefulWidget {
 class _OdsApplicationState extends State<OdsApplication> {
   // Fetch content from the json file
   Future<void> _readJson() async {
-    final String response = await rootBundle.loadString('assets/recipes.json');
-    Entity entity = entityFromJson(response);
+    final response = await rootBundle.loadString('assets/recipes.json');
+    final entity = entityFromJson(response);
 
     OdsApplication.category = entity.category;
     OdsApplication.recipes = entity.recipes;

@@ -97,9 +97,8 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final TextFieldCustomizationState? customizationState =
-        TextFieldCustomization.of(context);
-    final TextEditingController controllerTextField = TextEditingController();
+    final customizationState = TextFieldCustomization.of(context);
+    final controllerTextField = TextEditingController();
 
     final keyboardType = customizationState?.selectedKeyboardType.inputType;
 
@@ -145,8 +144,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final TextFieldCustomizationState? customizationState =
-        TextFieldCustomization.of(context);
+    final customizationState = TextFieldCustomization.of(context);
 
     return Column(
       children: [

@@ -71,8 +71,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ChipsCustomizationState? customizationState =
-        ChipsCustomization.of(context);
+    final customizationState = ChipsCustomization.of(context);
     final colorScheme = Theme.of(context).colorScheme;
     final colorFilter =
         ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
@@ -131,8 +130,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ChipsCustomizationState? customizationState =
-        ChipsCustomization.of(context);
+    final customizationState = ChipsCustomization.of(context);
 
     return SafeArea(
       child: Column(

@@ -63,8 +63,7 @@ class __BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final SwitchesCustomizationState? customizationState =
-        SwitchesCustomization.of(context);
+    final customizationState = SwitchesCustomization.of(context);
 
     return SafeArea(
       child: SingleChildScrollView(
@@ -119,8 +118,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final SwitchesCustomizationState? customizationState =
-        SwitchesCustomization.of(context);
+    final customizationState = SwitchesCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

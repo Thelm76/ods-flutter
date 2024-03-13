@@ -62,7 +62,7 @@ class OdsButtonIcon extends StatefulWidget {
 class _OdsButtonState extends State<OdsButtonIcon> {
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colors = Theme.of(context).colorScheme;
+    final colors = Theme.of(context).colorScheme;
 
     return IconButton(
       visualDensity: VisualDensity.standard,

@@ -56,8 +56,7 @@ class _ButtonsOutlinedState extends State<ButtonsOutlined> {
 class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ButtonCustomizationState? customizationState =
-        ButtonCustomization.of(context);
+    final customizationState = ButtonCustomization.of(context);
 
     final l10n = context.l10n;
 
@@ -84,8 +83,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ButtonCustomizationState? customizationState =
-        ButtonCustomization.of(context);
+    final customizationState = ButtonCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

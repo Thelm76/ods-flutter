@@ -61,8 +61,7 @@ class _Body extends StatefulWidget {
 class __BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
-    final MenuCustomizationState? customizationState =
-        MenuCustomization.of(context);
+    final customizationState = MenuCustomization.of(context);
 
     return Center(
       child: OdsExposedDropdownMenu(
@@ -147,8 +146,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final MenuCustomizationState? customizationState =
-        MenuCustomization.of(context);
+    final customizationState = MenuCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

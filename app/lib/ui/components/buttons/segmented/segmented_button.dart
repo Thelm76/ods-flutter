@@ -70,8 +70,7 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final SegmentedButtonCustomizationState? customizationState =
-        SegmentedButtonCustomization.of(context);
+    final customizationState = SegmentedButtonCustomization.of(context);
 
     return Padding(
       padding:
@@ -109,8 +108,7 @@ class _BodyState extends State<_Body> {
   }
 
   List<ButtonSegment<Foods>> _buttonSegmentList(BuildContext context) {
-    final SegmentedButtonCustomizationState? customizationState =
-        SegmentedButtonCustomization.of(context);
+    final customizationState = SegmentedButtonCustomization.of(context);
 
     return <ButtonSegment<Foods>>[
       ButtonSegment<Foods>(
@@ -165,8 +163,7 @@ class _CustomizationContentState extends State<_CustomizationContent> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final SegmentedButtonCustomizationState? customizationState =
-        SegmentedButtonCustomization.of(context);
+    final customizationState = SegmentedButtonCustomization.of(context);
 
     return SafeArea(
       child: Column(

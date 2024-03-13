@@ -81,8 +81,7 @@ class _SnackBarsVariants extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ComponentSnackbarsCustomizationState? customizationState =
-        ComponentSnackbarsCustomization.of(context);
+    final customizationState = ComponentSnackbarsCustomization.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,8 +136,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ComponentSnackbarsCustomizationState? customizationState =
-        ComponentSnackbarsCustomization.of(context);
+    final customizationState = ComponentSnackbarsCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

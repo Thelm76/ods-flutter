@@ -61,8 +61,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ChipsCustomizationState? customizationState =
-        ChipsCustomization.of(context);
+    final customizationState = ChipsCustomization.of(context);
     final colorScheme = Theme.of(context).colorScheme;
     final colorFilter =
         ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
@@ -93,8 +92,7 @@ class _CustomizationContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final ChipsCustomizationState? customizationState =
-        ChipsCustomization.of(context);
+    final customizationState = ChipsCustomization.of(context);
     return Column(
       children: [
         OdsListSwitch(

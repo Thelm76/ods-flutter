@@ -68,8 +68,7 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    final SheetsBottomCustomizationState? customizationState =
-        SheetsBottomCustomization.of(context);
+    final customizationState = SheetsBottomCustomization.of(context);
 
     return Padding(
       padding:
@@ -124,8 +123,7 @@ class _CustomizationContent extends StatefulWidget {
 class _CustomizationContentState extends State<_CustomizationContent> {
   @override
   Widget build(BuildContext context) {
-    final SheetsBottomCustomizationState? customizationState =
-        SheetsBottomCustomization.of(context);
+    final customizationState = SheetsBottomCustomization.of(context);
 
     if (customizationState?.selectedElement == SheetsBottomEnum.empty) {
       return Container(
