@@ -107,8 +107,8 @@ class _Body extends StatelessWidget {
               : null,
           title: recipe.title,
           subtitle:
-              customizationState?.hasSubtitle == true ? recipe.subtitle : null,
-          text: customizationState?.hasText == true ? recipe.description : null,
+              customizationState.hasSubtitle == true ? recipe.subtitle : null,
+          text: customizationState.hasText == true ? recipe.description : null,
           image: OdsCardImage(
             imageProvider: NetworkImage(recipe.url),
             contentDescription: '', //Optional
@@ -117,7 +117,7 @@ class _Body extends StatelessWidget {
           ),
           firstButton: firstButton,
           secondButton: secondButton,
-          onClick: customizationState!.clickable ? () {} : null,
+          onClick: customizationState.clickable ? () {} : null,
         ),
       ),
     );
