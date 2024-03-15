@@ -23,11 +23,11 @@ class OdsFloatingActionButton extends StatefulWidget {
   /// * [icon] - The icon widget displayed inside the button.
   /// * [semanticsLabel] - The description accessibility button.
   const OdsFloatingActionButton({
-    Key? key,
+    super.key,
     this.onClick,
     required this.icon,
-    this.semanticsLabel = "Floating action",
-  }) : super(key: key);
+    this.semanticsLabel = 'Floating action',
+  });
 
   /// The optional icon widget displayed inside the button.
   final Widget? icon;

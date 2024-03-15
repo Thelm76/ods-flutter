@@ -22,12 +22,12 @@ import 'package:ods_flutter/theme/ods_theme.dart';
 class OdsSmallCard extends StatefulWidget {
   /// Creates an ODS Small card.
   const OdsSmallCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.image,
     this.subtitle,
     this.onTap,
-  }) : super(key: key);
+  });
 
   static const double _imageHeight = 110;
 
@@ -35,7 +35,7 @@ class OdsSmallCard extends StatefulWidget {
   final String title;
 
   /// The image displayed in the card.
-  ///TODO For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
+  // TODO(ods-team): For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
   final Widget image;
 
   /// The optional card's subtitle displayed below the title.
@@ -72,21 +72,22 @@ class _OdsSmallCardState extends State<OdsSmallCard> {
                 Padding(
                   padding: const EdgeInsets.all(spacingM),
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.title,
+                        style: Theme.of(context).textTheme.titleMedium,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      if (widget.subtitle != null)
                         Text(
-                          widget.title,
-                          style: Theme.of(context).textTheme.titleMedium,
+                          widget.subtitle!,
+                          style: Theme.of(context).textTheme.bodyMedium,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        if (widget.subtitle != null)
-                          Text(
-                            widget.subtitle!,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                      ]),
-                )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -99,7 +100,7 @@ class _OdsSmallCardState extends State<OdsSmallCard> {
                 onTap: widget.onTap,
               ),
             ),
-          )
+          ),
       ],
     );
   }

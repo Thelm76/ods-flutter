@@ -11,8 +11,7 @@
  */
 
 import 'package:flutter/material.dart';
-
-import 'ods_palette.dart';
+import 'package:ods_flutter/theme/ods_palette.dart';
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,

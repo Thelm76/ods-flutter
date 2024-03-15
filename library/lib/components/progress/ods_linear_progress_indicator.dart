@@ -17,12 +17,12 @@ import 'package:ods_flutter/l10n/l10n.dart';
 class OdsLinearProgressIndicator extends StatefulWidget {
   /// ODS CircularProgressIndicator.
   const OdsLinearProgressIndicator({
-    Key? key,
+    super.key,
     this.progress,
     this.label,
     this.icon,
-    this.showCurrentValue,
-  }) : super(key: key);
+    this.showCurrentValue = true,
+  });
 
   /// The initial value of the circular progress indicator.
   final double? progress;
@@ -33,8 +33,8 @@ class OdsLinearProgressIndicator extends StatefulWidget {
   /// The icon of the circular progress indicator.
   final Widget? icon;
 
-  /// The final bool? showCurrentValue; step of the circular progress indicator.
-  final bool? showCurrentValue;
+  /// The final bool showCurrentValue; step of the circular progress indicator.
+  final bool showCurrentValue;
 
   @override
   State<OdsLinearProgressIndicator> createState() =>
@@ -75,9 +75,9 @@ class _OdsLinearProgressIndicatorState
             ),
           ),
           TweenAnimationBuilder<double>(
-            tween: Tween(begin: 0.0, end: widget.progress ?? 0.0),
+            tween: Tween(begin: 0, end: widget.progress ?? 0.0),
             duration: const Duration(seconds: 5),
-            builder: (BuildContext context, double value, Widget? child) {
+            builder: (context, value, child) {
               final progressValue = value * 100;
 
               return Column(
@@ -90,11 +90,12 @@ class _OdsLinearProgressIndicatorState
                   ExcludeSemantics(
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          top: spacingS, bottom: spacingS),
-                      child: widget.showCurrentValue == true &&
-                              widget.showCurrentValue != null
+                        top: spacingS,
+                        bottom: spacingS,
+                      ),
+                      child: widget.showCurrentValue
                           ? Text(
-                              "${progressValue.toInt()} %",
+                              '${progressValue.toInt()} %',
                               style: Theme.of(context).textTheme.bodyMedium,
                             )
                           : null,

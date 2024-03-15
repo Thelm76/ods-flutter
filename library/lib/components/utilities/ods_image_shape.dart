@@ -29,11 +29,10 @@ enum OdsImageShapeEnum {
 }
 
 class OdsImageShape {
+  OdsImageShape(this.context, this.shape, this.url);
   final String? shape;
   final BuildContext context;
   final String? url;
-
-  OdsImageShape(this.context, this.shape, this.url);
 
   Widget? buildImage() {
     final colorScheme = Theme.of(context).colorScheme;
@@ -63,14 +62,12 @@ class OdsImageShape {
           placeholder: const AssetImage('assets/placeholder.png'),
           image: NetworkImage(url!),
           fit: BoxFit.cover,
-          alignment: Alignment.center,
           width: 110,
           height: 74,
           imageErrorBuilder: (context, error, stackTrace) {
             return const Image(
               image: AssetImage('assets/placeholder.png'),
               fit: BoxFit.cover,
-              alignment: Alignment.center,
               width: 110,
               height: 74,
             );
@@ -80,14 +77,12 @@ class OdsImageShape {
           placeholder: const AssetImage('assets/placeholder.png'),
           image: NetworkImage(url!),
           fit: BoxFit.cover,
-          alignment: Alignment.center,
           width: 60,
           height: 74,
           imageErrorBuilder: (context, error, stackTrace) {
             return const Image(
               image: AssetImage('assets/placeholder.png'),
               fit: BoxFit.cover,
-              alignment: Alignment.center,
               width: 60,
               height: 74,
             );

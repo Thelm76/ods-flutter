@@ -75,8 +75,7 @@ class _BodyState extends State<_Body> {
               icon: customizationState?.hasIcon == true
                   ? const Icon(Icons.download)
                   : null,
-              showCurrentValue:
-                  customizationState?.hasCurrentValue == true ? true : null),
+              showCurrentValue: customizationState?.hasCurrentValue ?? false),
         ),
       ),
     );

@@ -18,19 +18,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^6.0.0
-  flutter_svg: ^2.0.6
-
   # Localization setup
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^2.0.6
+  google_fonts: ^6.0.0
   intl: any
   intl_translation: ^0.18.0
 
 dev_dependencies:
+  all_lint_rules_community: 0.0.31
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 dependency_overrides:
   http: ^1.0.0

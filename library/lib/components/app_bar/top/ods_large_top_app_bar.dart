@@ -44,7 +44,7 @@ class OdsLargeTopAppBar extends StatelessWidget implements PreferredSizeWidget {
           title: Semantics(header: true, child: Text(title)),
           actions: actions,
           leading: navigationIcon,
-          automaticallyImplyLeading: navigationIcon != null ? true : false,
+          automaticallyImplyLeading: navigationIcon != null,
         ),
 
         /// Adding a list as content

@@ -15,18 +15,17 @@ import 'package:ods_flutter/theme/ods_palette.dart';
 
 /// Class that encapsulates the logic for generating the thumb icon for the Switch.
 class OdsSwitchIcon {
-  final BuildContext context;
-
   /// Constructor that takes a BuildContext.
-  OdsSwitchIcon(this.context);
+  OdsSwitchIcon(this.theme);
+
+  final ThemeData theme;
 
   /// Getter for the thumbIcon property.
   MaterialStateProperty<Icon?>? get thumbIcon {
     /// Determine if the current theme is light or dark.
-    final isLightTheme = Theme.of(context).brightness == Brightness.light;
+    final isLightTheme = theme.brightness == Brightness.light;
 
-    return MaterialStateProperty.resolveWith<Icon?>(
-        (Set<MaterialState> states) {
+    return MaterialStateProperty.resolveWith<Icon?>((states) {
       /// If the Switch is both disabled and selected.
       if (states.contains(MaterialState.disabled) &&
           states.contains(MaterialState.selected)) {

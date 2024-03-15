@@ -17,10 +17,10 @@ import 'package:ods_flutter/l10n/l10n.dart';
 class OdsCircularProgressIndicator extends StatefulWidget {
   /// ODS CircularProgressIndicator.
   const OdsCircularProgressIndicator({
-    Key? key,
+    super.key,
     this.progress,
     this.label,
-  }) : super(key: key);
+  });
 
   /// The initial value of the circular progress indicator.
   final double? progress;
@@ -47,9 +47,9 @@ class _OdsCircularProgressIndicatorState
     final progressValue = widget.progress ?? 0.0;
 
     return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0.0, end: progressValue),
+      tween: Tween(begin: 0, end: progressValue),
       duration: const Duration(seconds: 3),
-      builder: (BuildContext context, double value, Widget? child) {
+      builder: (context, value, child) {
         final circularProgress = CircularProgressIndicator(
           semanticsLabel: l10n.componentProgressTitle,
           value: widget.progress != null ? value : null,
@@ -57,7 +57,6 @@ class _OdsCircularProgressIndicatorState
 
         return MergeSemantics(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               circularProgress,
               if (widget.label != null)

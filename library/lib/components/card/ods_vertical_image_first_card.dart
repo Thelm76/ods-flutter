@@ -23,7 +23,7 @@ import 'package:ods_flutter/guidelines/spacings.dart';
 class OdsVerticalImageFirstCard extends StatefulWidget {
   /// Creates an ODS vertical image first card.
   const OdsVerticalImageFirstCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.image,
     this.subtitle,
@@ -31,12 +31,12 @@ class OdsVerticalImageFirstCard extends StatefulWidget {
     this.firstButton,
     this.secondButton,
     this.onClick,
-  }) : super(key: key);
+  });
 
   static const double _imageHeight = 200;
 
   /// The image displayed in the card.
-  ///TODO For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
+  // TODO(ods-team): For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
   final OdsCardImage image;
 
   /// The card's title displayed below the image.
@@ -89,7 +89,9 @@ class _OdsVerticalImageFirstCardState extends State<OdsVerticalImageFirstCard> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: spacingM, left: spacingM),
+                          top: spacingM,
+                          left: spacingM,
+                        ),
                         child: Text(
                           widget.title,
                           style: Theme.of(context).textTheme.titleLarge,
@@ -106,7 +108,10 @@ class _OdsVerticalImageFirstCardState extends State<OdsVerticalImageFirstCard> {
                       if (widget.text != null && widget.text!.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.only(
-                              left: spacingM, right: spacingM, top: spacingS),
+                            left: spacingM,
+                            right: spacingM,
+                            top: spacingS,
+                          ),
                           child: Text(
                             widget.text!,
                           ),

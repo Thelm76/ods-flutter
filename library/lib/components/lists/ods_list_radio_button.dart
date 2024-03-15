@@ -20,13 +20,13 @@ import 'package:ods_flutter/l10n/l10n.dart';
 class OdsListRadioButton<T> extends StatefulWidget {
   /// Creates an ODS OdsListRadioButton.
   const OdsListRadioButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
     required this.groupValue,
     required this.onCheckedChange,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   /// The primary content of the list tile
   final String title;
@@ -41,7 +41,7 @@ class OdsListRadioButton<T> extends StatefulWidget {
   final void Function(T?)? onCheckedChange;
 
   /// Controls the enabled state of the radio button. When false, this button will not be clickable.
-  final bool? enabled;
+  final bool enabled;
 
   @override
   State<OdsListRadioButton<T>> createState() => _OdsRadioButtonState<T>();
@@ -72,7 +72,7 @@ class _OdsRadioButtonState<T> extends State<OdsListRadioButton<T>> {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         value: widget.value,
-        onChanged: widget.enabled != false ? widget.onCheckedChange : null,
+        onChanged: widget.enabled ? widget.onCheckedChange : null,
         groupValue: widget.groupValue,
       ),
     );

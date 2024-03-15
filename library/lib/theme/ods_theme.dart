@@ -13,15 +13,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ods_flutter/guidelines/spacings.dart';
+import 'package:ods_flutter/theme/ods_color_scheme.dart';
 import 'package:ods_flutter/theme/ods_palette.dart';
 import 'package:ods_flutter/theme/ods_typography.dart';
 
-import 'ods_color_scheme.dart';
-
 const double _disabledOpacity = 0.38;
 
-const double odsCardRadius = 5.0;
-const double odsChipRadius = 20.0;
+const odsCardRadius = 5.0;
+const odsChipRadius = 20.0;
 
 class OdsTheme {
   OdsTheme._();
@@ -35,51 +34,43 @@ class OdsTheme {
       surfaceTintColor: white100,
       backgroundColor: white100,
       systemOverlayStyle: SystemUiOverlayStyle(
-          systemNavigationBarColor: white100,
-          systemNavigationBarDividerColor: grey200,
-          systemNavigationBarIconBrightness: Brightness.dark,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.light),
+        systemNavigationBarColor: white100,
+        systemNavigationBarDividerColor: grey200,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+      ),
     ),
     navigationBarTheme: NavigationBarThemeData(
       surfaceTintColor: lightColorScheme.onSecondary,
-      elevation: 3.0,
+      elevation: 3,
       indicatorColor: grey200,
-      indicatorShape: null,
       iconTheme: MaterialStateProperty.resolveWith<IconThemeData?>(
-        (states) {
-          if (states.contains(MaterialState.selected)) {
-            return IconThemeData(color: lightColorScheme.primary);
-          }
-          return IconThemeData(color: lightColorScheme.secondary);
-        },
+        (final states) => states.contains(MaterialState.selected)
+            ? IconThemeData(color: lightColorScheme.primary)
+            : IconThemeData(color: lightColorScheme.secondary),
       ),
       labelTextStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-        (states) {
-          if (states.contains(MaterialState.selected)) {
-            return TextStyle(
-                color: lightColorScheme.primary,
-                overflow: TextOverflow.ellipsis,
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-                height: 1.43,
-                letterSpacing: 0.25);
-          }
+        (final states) {
+          final selected = states.contains(MaterialState.selected);
+
           return TextStyle(
-              color: lightColorScheme.secondary,
-              overflow: TextOverflow.ellipsis,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              height: 1.43,
-              letterSpacing: 0.25);
+            color: selected
+                ? lightColorScheme.primary
+                : lightColorScheme.secondary,
+            overflow: TextOverflow.ellipsis,
+            fontSize: 12,
+            fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
+            height: 1.43,
+            letterSpacing: 0.25,
+          );
         },
       ),
     ),
     navigationRailTheme: NavigationRailThemeData(
       //surfaceTintColor: lightColorScheme.onSecondary,
-      elevation: 3.0,
+      elevation: 3,
       indicatorColor: grey200,
-      indicatorShape: null,
       selectedIconTheme: IconThemeData(color: lightColorScheme.primary),
       unselectedIconTheme: IconThemeData(color: lightColorScheme.secondary),
       selectedLabelTextStyle: TextStyle(
@@ -100,8 +91,9 @@ class OdsTheme {
       ),
     ),
     cardTheme: CardTheme(
-        surfaceTintColor: lightColorScheme.onSecondary,
-        color: lightColorScheme.surface),
+      surfaceTintColor: lightColorScheme.onSecondary,
+      color: lightColorScheme.surface,
+    ),
     bottomNavigationBarTheme:
         const BottomNavigationBarThemeData(backgroundColor: white100),
     checkboxTheme:
@@ -109,7 +101,7 @@ class OdsTheme {
     radioTheme:
         const RadioThemeData(fillColor: LightControlRadioButtonsFillColor()),
     switchTheme: SwitchThemeData(
-      trackColor: MaterialStateProperty.resolveWith((states) {
+      trackColor: MaterialStateProperty.resolveWith((final states) {
         final selected = states.contains(MaterialState.selected);
         final disabled = states.contains(MaterialState.disabled);
 
@@ -121,7 +113,7 @@ class OdsTheme {
         };
       }),
       overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.4)),
-      thumbColor: MaterialStateProperty.resolveWith((states) {
+      thumbColor: MaterialStateProperty.resolveWith((final states) {
         final selected = states.contains(MaterialState.selected);
         final disabled = states.contains(MaterialState.disabled);
 
@@ -164,9 +156,10 @@ class OdsTheme {
       linearTrackColor: lightColorScheme.tertiaryContainer,
     ),
     dialogTheme: const DialogTheme(
-        backgroundColor: Colors.white,
-        shadowColor: Colors.white,
-        surfaceTintColor: Colors.white),
+      backgroundColor: Colors.white,
+      shadowColor: Colors.white,
+      surfaceTintColor: Colors.white,
+    ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         minimumSize: const Size(90, 40),
@@ -177,7 +170,8 @@ class OdsTheme {
         ),
       ).copyWith(
         overlayColor: MaterialStateProperty.all<Color>(
-            lightColorScheme.primaryContainer.withOpacity(0.12)),
+          lightColorScheme.primaryContainer.withOpacity(0.12),
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -191,8 +185,9 @@ class OdsTheme {
         ),
       ).copyWith(
         overlayColor: MaterialStateProperty.all<Color>(
-            lightColorScheme.primary.withOpacity(0.12)),
-        side: MaterialStateProperty.resolveWith<BorderSide>((states) {
+          lightColorScheme.primary.withOpacity(0.12),
+        ),
+        side: MaterialStateProperty.resolveWith<BorderSide>((final states) {
           if (states.contains(MaterialState.hovered) ||
               states.contains(MaterialState.pressed)) {
             return BorderSide(
@@ -231,7 +226,7 @@ class OdsTheme {
     menuButtonTheme: MenuButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
+          (final states) {
             if (states.contains(MaterialState.pressed)) {
               return lightColorScheme.primary.withOpacity(0.3);
             }
@@ -245,7 +240,7 @@ class OdsTheme {
           },
         ),
         foregroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
+          (final states) {
             if (states.contains(MaterialState.disabled)) {
               return lightColorScheme.onSurface.withOpacity(0.28);
             }
@@ -257,8 +252,7 @@ class OdsTheme {
             return lightColorScheme.onSurface;
           },
         ),
-        iconColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+        iconColor: MaterialStateProperty.resolveWith((final states) {
           if (states.contains(MaterialState.disabled)) {
             return lightColorScheme.onSurface.withOpacity(0.38);
           }
@@ -273,8 +267,7 @@ class OdsTheme {
           }
           return lightColorScheme.onSurfaceVariant;
         }),
-        overlayColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+        overlayColor: MaterialStateProperty.resolveWith((final states) {
           if (states.contains(MaterialState.pressed)) {
             return lightColorScheme.onPrimary.withOpacity(0.12);
           }
@@ -291,7 +284,7 @@ class OdsTheme {
     segmentedButtonTheme: SegmentedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
+          (final states) {
             return states.contains(MaterialState.selected) &&
                     !states.contains(MaterialState.disabled)
                 ? lightColorScheme.primary
@@ -299,7 +292,7 @@ class OdsTheme {
           },
         ),
         foregroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
+          (final states) {
             return !states.contains(MaterialState.disabled)
                 ? lightColorScheme.secondary
                 : null;
@@ -318,47 +311,50 @@ class OdsTheme {
       backgroundColor: darkSurfaceDefault,
       surfaceTintColor: darkSurfaceDefault,
       systemOverlayStyle: SystemUiOverlayStyle(
-          systemNavigationBarColor: black900,
-          systemNavigationBarDividerColor: white100,
-          systemNavigationBarIconBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.light,
-          statusBarBrightness: Brightness.dark),
+        systemNavigationBarColor: black900,
+        systemNavigationBarDividerColor: white100,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+      ),
     ),
     navigationBarTheme: NavigationBarThemeData(
       surfaceTintColor: lightColorScheme.onSecondary,
-      elevation: 3.0,
+      elevation: 3,
       indicatorColor: grey800,
-      indicatorShape: null,
-      iconTheme: MaterialStateProperty.resolveWith<IconThemeData?>((states) {
+      iconTheme:
+          MaterialStateProperty.resolveWith<IconThemeData?>((final states) {
         if (states.contains(MaterialState.selected)) {
           return IconThemeData(color: darkColorScheme.primary);
         }
         return IconThemeData(color: darkColorScheme.secondary);
       }),
-      labelTextStyle: MaterialStateProperty.resolveWith<TextStyle?>((states) {
+      labelTextStyle:
+          MaterialStateProperty.resolveWith<TextStyle?>((final states) {
         if (states.contains(MaterialState.selected)) {
           return TextStyle(
-              color: darkColorScheme.primary,
-              overflow: TextOverflow.ellipsis,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              height: 1.43,
-              letterSpacing: 0.25);
-        }
-        return TextStyle(
-            color: darkColorScheme.secondary,
+            color: darkColorScheme.primary,
             overflow: TextOverflow.ellipsis,
             fontSize: 14,
             fontWeight: FontWeight.w400,
             height: 1.43,
-            letterSpacing: 0.25);
+            letterSpacing: 0.25,
+          );
+        }
+        return TextStyle(
+          color: darkColorScheme.secondary,
+          overflow: TextOverflow.ellipsis,
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          height: 1.43,
+          letterSpacing: 0.25,
+        );
       }),
     ),
     navigationRailTheme: NavigationRailThemeData(
       //surfaceTintColor: lightColorScheme.onSecondary,
-      elevation: 3.0,
+      elevation: 3,
       indicatorColor: grey800,
-      indicatorShape: null,
       selectedIconTheme: IconThemeData(color: darkColorScheme.primary),
       unselectedIconTheme: IconThemeData(color: darkColorScheme.secondary),
       selectedLabelTextStyle: TextStyle(
@@ -385,12 +381,13 @@ class OdsTheme {
     bottomNavigationBarTheme:
         const BottomNavigationBarThemeData(backgroundColor: darkSurfaceDefault),
     checkboxTheme: const CheckboxThemeData(
-        fillColor: DarkControlCheckboxFillColor(),
-        checkColor: MaterialStatePropertyAll(black900)),
+      fillColor: DarkControlCheckboxFillColor(),
+      checkColor: MaterialStatePropertyAll(black900),
+    ),
     radioTheme:
         const RadioThemeData(fillColor: DarkControlRadioButtonsFillColor()),
     switchTheme: SwitchThemeData(
-      trackColor: MaterialStateProperty.resolveWith((states) {
+      trackColor: MaterialStateProperty.resolveWith((final states) {
         final disabled = states.contains(MaterialState.disabled);
         final selected = states.contains(MaterialState.selected);
 
@@ -402,7 +399,7 @@ class OdsTheme {
         };
       }),
       overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.4)),
-      thumbColor: MaterialStateProperty.resolveWith((states) {
+      thumbColor: MaterialStateProperty.resolveWith((final states) {
         final selected = states.contains(MaterialState.selected);
         final disabled = states.contains(MaterialState.disabled);
 
@@ -438,18 +435,20 @@ class OdsTheme {
       backgroundColor: darkColorScheme.primary,
     ),
     sliderTheme: SliderThemeData(
-        showValueIndicator: ShowValueIndicator.always,
-        inactiveTrackColor: grey600,
-        overlayColor: grey600.withOpacity(0.3),
-        activeTickMarkColor: grey600,
-        inactiveTickMarkColor: grey500),
+      showValueIndicator: ShowValueIndicator.always,
+      inactiveTrackColor: grey600,
+      overlayColor: grey600.withOpacity(0.3),
+      activeTickMarkColor: grey600,
+      inactiveTickMarkColor: grey500,
+    ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       linearTrackColor: darkColorScheme.tertiaryContainer,
     ),
     dialogTheme: const DialogTheme(
-        backgroundColor: grey900,
-        shadowColor: grey900,
-        surfaceTintColor: grey900),
+      backgroundColor: grey900,
+      shadowColor: grey900,
+      surfaceTintColor: grey900,
+    ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         minimumSize: const Size(90, 40),
@@ -460,7 +459,8 @@ class OdsTheme {
         ),
       ).copyWith(
         overlayColor: MaterialStateProperty.all<Color>(
-            darkColorScheme.primaryContainer.withOpacity(0.12)),
+          darkColorScheme.primaryContainer.withOpacity(0.12),
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -474,8 +474,9 @@ class OdsTheme {
         ),
       ).copyWith(
         overlayColor: MaterialStateProperty.all<Color>(
-            darkColorScheme.primary.withOpacity(0.12)),
-        side: MaterialStateProperty.resolveWith<BorderSide>((states) {
+          darkColorScheme.primary.withOpacity(0.12),
+        ),
+        side: MaterialStateProperty.resolveWith<BorderSide>((final states) {
           if (states.contains(MaterialState.hovered) ||
               states.contains(MaterialState.pressed)) {
             return BorderSide(
@@ -501,7 +502,7 @@ class OdsTheme {
     menuButtonTheme: MenuButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
+          (final states) {
             if (states.contains(MaterialState.pressed)) {
               return darkColorScheme.primary.withOpacity(0.6);
             }
@@ -516,7 +517,7 @@ class OdsTheme {
           },
         ),
         foregroundColor: MaterialStateProperty.resolveWith(
-          (Set<MaterialState> states) {
+          (final states) {
             if (states.contains(MaterialState.disabled)) {
               return darkColorScheme.onSurface.withOpacity(0.28);
             }
@@ -528,8 +529,7 @@ class OdsTheme {
             return darkColorScheme.onSurface;
           },
         ),
-        iconColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+        iconColor: MaterialStateProperty.resolveWith((final states) {
           if (states.contains(MaterialState.disabled)) {
             return darkColorScheme.onSurface.withOpacity(0.38);
           }
@@ -544,8 +544,7 @@ class OdsTheme {
           }
           return darkColorScheme.onSurfaceVariant;
         }),
-        overlayColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+        overlayColor: MaterialStateProperty.resolveWith((final states) {
           if (states.contains(MaterialState.pressed)) {
             return darkColorScheme.onPrimary.withOpacity(0.12);
           }
@@ -562,7 +561,7 @@ class OdsTheme {
     segmentedButtonTheme: SegmentedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
+          (final states) {
             if (!states.contains(MaterialState.disabled)) {
               return states.contains(MaterialState.selected)
                   ? darkColorScheme.primary
@@ -573,7 +572,9 @@ class OdsTheme {
         ),
         foregroundColor: MaterialStateProperty.resolveWith(
           (Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) return null;
+            if (states.contains(MaterialState.disabled)) {
+              return null;
+            }
 
             return states.contains(MaterialState.selected)
                 ? darkColorScheme.onSecondary
@@ -592,7 +593,7 @@ class LightControlRadioButtonsFillColor extends MaterialStateColor {
   static const int _defaultColor = 0xff000000;
 
   @override
-  Color resolve(Set states) {
+  Color resolve(Set<MaterialState> states) {
     if (states.contains(MaterialState.disabled)) {
       return lightColorScheme.onSurface.withOpacity(_disabledOpacity);
     }
@@ -612,7 +613,7 @@ class LightControlCheckboxFillColor extends MaterialStateColor {
   static const int _defaultColor = 0xff000000;
 
   @override
-  Color resolve(Set states) {
+  Color resolve(Set<MaterialState> states) {
     final selected = states.contains(MaterialState.selected);
     final disabled = states.contains(MaterialState.disabled);
 
@@ -632,7 +633,7 @@ class DarkControlRadioButtonsFillColor extends MaterialStateColor {
   static const int _defaultColor = 0xffffffff;
 
   @override
-  Color resolve(Set states) {
+  Color resolve(Set<MaterialState> states) {
     final selected = states.contains(MaterialState.selected);
     final disabled = states.contains(MaterialState.disabled);
 
@@ -651,7 +652,7 @@ class DarkControlCheckboxFillColor extends MaterialStateColor {
   static const int _defaultColor = 0xffffffff;
 
   @override
-  Color resolve(Set states) {
+  Color resolve(Set<MaterialState> states) {
     final selected = states.contains(MaterialState.selected);
     final disabled = states.contains(MaterialState.disabled);
 
@@ -665,13 +666,13 @@ class DarkControlCheckboxFillColor extends MaterialStateColor {
 }
 
 /// Dark theme fill color used by selection controls: Chip
-class DarkChipLabelColor extends Color implements MaterialStateColor {
+class DarkChipLabelColor extends MaterialStateColor {
   const DarkChipLabelColor() : super(_default);
 
   static const int _default = 0xFF000000;
 
   @override
-  Color resolve(Set<MaterialState> states) {
+  Color resolve(final Set<MaterialState> states) {
     if (states.contains(MaterialState.selected)) {
       return darkColorScheme.onSecondary; // Selected text color
     }

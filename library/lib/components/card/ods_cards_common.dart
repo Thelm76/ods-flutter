@@ -13,12 +13,6 @@
 import 'package:flutter/material.dart';
 
 class OdsCardImage extends StatelessWidget {
-  final ImageProvider imageProvider;
-  final String contentDescription;
-  final Alignment alignment;
-  final BoxFit contentScale;
-  final Color? backgroundColor;
-
   const OdsCardImage({
     super.key,
     required this.imageProvider,
@@ -28,12 +22,18 @@ class OdsCardImage extends StatelessWidget {
     this.backgroundColor,
   });
 
+  final ImageProvider imageProvider;
+  final String contentDescription;
+  final Alignment alignment;
+  final BoxFit contentScale;
+  final Color? backgroundColor;
+
   @override
   Widget build(BuildContext context) {
     return Semantics(
       image: true,
       label: contentDescription,
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,
         ),
@@ -55,12 +55,6 @@ class OdsCardImage extends StatelessWidget {
 }
 
 class OdsCardThumbnail extends StatelessWidget {
-  final ImageProvider imageProvider;
-  final String contentDescription;
-  final Alignment alignment;
-  final BoxFit contentScale;
-  final Color? backgroundColor;
-
   const OdsCardThumbnail({
     super.key,
     required this.imageProvider,
@@ -69,6 +63,11 @@ class OdsCardThumbnail extends StatelessWidget {
     this.contentScale = BoxFit.cover,
     this.backgroundColor,
   });
+  final ImageProvider imageProvider;
+  final String contentDescription;
+  final Alignment alignment;
+  final BoxFit contentScale;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {

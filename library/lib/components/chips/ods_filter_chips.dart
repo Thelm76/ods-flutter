@@ -26,19 +26,19 @@ class OdsFilterChip extends StatefulWidget {
   /// * [selected] - Specifies whether the chips is selected or not.
   ///
   const OdsFilterChip({
-    Key? key,
+    super.key,
     required this.text,
     this.onClick,
     this.enabled = true,
     this.selected = false,
     this.leadingAvatar,
-  }) : super(key: key);
+  });
 
   /// Text to be displayed into the chip.
   final String text;
 
   /// Callback called on chip click
-  final void Function(bool)? onClick;
+  final ValueChanged<bool>? onClick;
 
   /// Specifies whether the chips is selected or not.
   final bool enabled;
@@ -61,7 +61,7 @@ class _OdsFilterChipState extends State<OdsFilterChip> {
       label: widget.text,
       child: FilterChip(
         label: Text(widget.text),
-        onSelected: widget.enabled != false ? widget.onClick : null,
+        onSelected: widget.enabled ? widget.onClick : null,
         selected: widget.selected,
         avatar: widget.leadingAvatar,
       ),

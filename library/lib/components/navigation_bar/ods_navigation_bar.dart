@@ -20,12 +20,12 @@ import 'package:ods_flutter/components/navigation_bar/ods_navigation_bar_item.da
 class OdsNavigationBar extends StatefulWidget {
   /// Creates an ODS Small card.
   const OdsNavigationBar({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.destinations,
     this.onDestinationSelected,
     this.icon,
-  }) : super(key: key);
+  });
 
   /// The index of the currently selected destination.
   final int selectedIndex;

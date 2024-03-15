@@ -19,8 +19,7 @@ import 'package:ods_flutter/l10n/l10n.dart';
 /// Creates a destination that is used with NavigationRailItem.destinations.
 class OdsNavigationRailItem extends NavigationRailDestination {
   OdsNavigationRailItem({
-    Key? key,
-    required dynamic icon,
+    required Object? icon,
     String? badge,
     required String label,
     required BuildContext context,
@@ -31,8 +30,11 @@ class OdsNavigationRailItem extends NavigationRailDestination {
         );
 
   static Widget _buildIcon(
-      dynamic iconData, String? badge, BuildContext context,
-      {bool isSelected = false}) {
+    Object? iconData,
+    String? badge,
+    BuildContext context, {
+    bool isSelected = false,
+  }) {
     final l10n = context.odsL10n;
 
     final colorScheme = Theme.of(context).colorScheme;
@@ -41,7 +43,7 @@ class OdsNavigationRailItem extends NavigationRailDestination {
         : ColorFilter.mode(colorScheme.secondary, BlendMode.srcIn);
 
     /// If the type is IconType.icon, use the provided icon (of type Icon)
-    Widget iconWidget = iconData is Widget
+    final iconWidget = iconData is Widget
         ? iconData
 
         /// If the type is IconType.svg, use the SVG icon
@@ -61,17 +63,18 @@ class OdsNavigationRailItem extends NavigationRailDestination {
                     child: Image.asset(iconData),
                   )
                 : throw Exception(
-                    'Invalid icon type: ${iconData.runtimeType}')));
+                    'Invalid icon type: ${iconData.runtimeType}',
+                  )));
 
     /// If the odsBottomNavigationItemIcon.badge parameter is not empty, use the Widget Badge
     return badge != null
         ? Badge(
             label: Semantics(
-              label: "$badge ${l10n.componentNavigationBarNotification}",
+              label: '$badge ${l10n.componentNavigationBarNotification}',
               excludeSemantics: true,
               child: Text(
                 badge,
-                textScaleFactor: 1.0,
+                textScaleFactor: 1,
               ),
             ),
             child: iconWidget,

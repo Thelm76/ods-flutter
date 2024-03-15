@@ -18,6 +18,21 @@ import 'package:flutter/material.dart';
 ///
 ///.
 class OdsPasswordTextField extends StatefulWidget {
+  const OdsPasswordTextField({
+    super.key,
+    this.controller,
+    this.onClick,
+    this.enabled = true,
+    this.errorMessage,
+    this.label,
+    this.keyboardType,
+    this.keyboardActions,
+    this.characterCounter,
+    this.doCapitalizeText = false,
+    this.onValueChange,
+    this.hasVisualisationIcon = true,
+  });
+
   /// A controller for an editable text field
   final TextEditingController? controller;
 
@@ -25,7 +40,7 @@ class OdsPasswordTextField extends StatefulWidget {
   final Function(String)? onClick;
 
   /// If false the text field is disabled. It ignores taps and its decoration is rendered in grey
-  final bool? enabled;
+  final bool enabled;
 
   /// If non-null, the border's color animates to red and the [helperText] is
   /// not shown.
@@ -44,28 +59,13 @@ class OdsPasswordTextField extends StatefulWidget {
   final int? characterCounter;
 
   /// Configures how the platform keyboard will select an uppercase or lowercase keyboard
-  final bool? textCapitalization;
+  final bool doCapitalizeText;
 
   /// Callback that is triggered when the input service updates the text. An updated text comes as a parameter of the callback
   final Function(String)? onValueChange;
 
   /// Controls the display of the eye icon to allow showing/hiding password
-  final bool visualisationIcon;
-
-  const OdsPasswordTextField({
-    Key? key,
-    this.controller,
-    this.onClick,
-    this.enabled,
-    this.errorMessage,
-    this.label,
-    this.keyboardType,
-    this.keyboardActions,
-    this.characterCounter,
-    this.textCapitalization = false,
-    this.onValueChange,
-    this.visualisationIcon = true,
-  }) : super(key: key);
+  final bool hasVisualisationIcon;
 
   @override
   State<OdsPasswordTextField> createState() => _OdsPasswordTextFieldState();
@@ -83,11 +83,11 @@ class _OdsPasswordTextFieldState extends State<OdsPasswordTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      obscureText: widget.visualisationIcon == true ? isObscureText : true,
+      obscureText: widget.hasVisualisationIcon && isObscureText,
       keyboardType: widget.keyboardType,
       textInputAction: widget.keyboardActions,
       onChanged: widget.onValueChange,
-      textCapitalization: widget.textCapitalization == true
+      textCapitalization: widget.doCapitalizeText
           ? TextCapitalization.characters
           : TextCapitalization.none,
       keyboardAppearance: Theme.of(context).brightness == Brightness.dark
@@ -96,7 +96,7 @@ class _OdsPasswordTextFieldState extends State<OdsPasswordTextField> {
       maxLength: widget.characterCounter,
       enabled: widget.enabled,
       decoration: InputDecoration(
-        suffixIcon: widget.visualisationIcon == true
+        suffixIcon: widget.hasVisualisationIcon
             ? IconButton(
                 icon: isObscureText
                     ? const Icon(

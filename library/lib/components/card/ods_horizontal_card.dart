@@ -28,7 +28,7 @@ enum OdsHorizontalCardImagePosition {
 /// A ripple effect is managed on card click.
 class OdsHorizontalCard extends StatefulWidget {
   const OdsHorizontalCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.image,
     this.subtitle,
@@ -36,9 +36,9 @@ class OdsHorizontalCard extends StatefulWidget {
     this.firstButton,
     this.secondButton,
     this.imagePosition = OdsHorizontalCardImagePosition.start,
-    this.divider = true,
+    this.hasDivider = true,
     this.onClick,
-  }) : super(key: key);
+  });
 
   static const double _imageHeight = 0;
   static const double _imageWidth = 150;
@@ -46,7 +46,7 @@ class OdsHorizontalCard extends StatefulWidget {
   static const double _dividerOpacity = 0.12;
 
   /// The image displayed in the card.
-  ///TODO For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
+  // TODO(ods-team): For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
   final OdsCardImage image;
 
   /// The card's title displayed below the image.
@@ -68,7 +68,7 @@ class OdsHorizontalCard extends StatefulWidget {
   final OdsHorizontalCardImagePosition imagePosition;
 
   /// Optional divider in the card. If false, divider will not be shown.
-  final bool? divider;
+  final bool hasDivider;
 
   /// The action executed on card tap.
   final Function()? onClick;
@@ -104,7 +104,8 @@ class _OdsHorizontalCardState extends State<OdsHorizontalCard> {
                       children: [
                         Container(
                           constraints: const BoxConstraints(
-                              minHeight: OdsHorizontalCard._imageMinWidth),
+                            minHeight: OdsHorizontalCard._imageMinWidth,
+                          ),
                           child: IntrinsicHeight(
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -121,10 +122,11 @@ class _OdsHorizontalCardState extends State<OdsHorizontalCard> {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        left: spacingM,
-                                        top: spacingM,
-                                        right: spacingM,
-                                        bottom: spacingS),
+                                      left: spacingM,
+                                      top: spacingM,
+                                      right: spacingM,
+                                      bottom: spacingS,
+                                    ),
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -147,14 +149,16 @@ class _OdsHorizontalCardState extends State<OdsHorizontalCard> {
                                         if (widget.text != null)
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                top: spacingM),
-                                            child: Text(widget.text!,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium,
-                                                maxLines: 2,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
+                                              top: spacingM,
+                                            ),
+                                            child: Text(
+                                              widget.text!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
                                           ),
                                       ],
                                     ),
@@ -168,12 +172,12 @@ class _OdsHorizontalCardState extends State<OdsHorizontalCard> {
                                       height: OdsHorizontalCard._imageHeight,
                                       child: widget.image,
                                     ),
-                                  )
+                                  ),
                               ],
                             ),
                           ),
                         ),
-                        if (widget.divider != false)
+                        if (widget.hasDivider)
                           Divider(
                             height: 0,
                             thickness: 1,

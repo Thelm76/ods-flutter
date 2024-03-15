@@ -37,8 +37,8 @@ class OdsAlertDialogButton {
 /// The dialog can expand to full screen width if specified.
 class OdsAlertDialog extends StatefulWidget {
   const OdsAlertDialog({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<OdsAlertDialog> createState() => _OdsAlertDialogState();
@@ -51,14 +51,14 @@ class OdsAlertDialog extends StatefulWidget {
   /// * [title] - Title displayed into the dialog which should specify the purpose of the dialog. The title is not mandatory, because there may be sufficient information inside the `text`.
   ///
   ///
-  static void openDialog({
+  static Future<void> openDialog({
     required BuildContext context,
     required String text,
     required OdsAlertDialogButton confirmButton,
     OdsAlertDialogButton? dismissButton,
     String? title,
   }) {
-    showDialog<void>(
+    return showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
         title: title != null ? Text(title) : null,
@@ -83,14 +83,14 @@ class OdsAlertDialog extends StatefulWidget {
     );
   }
 
-  static void openFullscreenDialog({
+  static Future<void> openFullscreenDialog({
     required BuildContext context,
     required String text,
     Widget? body,
     String? buttonRight,
     Function()? onButtonRightClick,
   }) {
-    showDialog<void>(
+    return showDialog<void>(
       context: context,
       builder: (context) => Dialog.fullscreen(
         child: Padding(

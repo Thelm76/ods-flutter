@@ -70,7 +70,7 @@ class __BodyState extends State<_Body> {
           OdsListSwitch(
             title: OdsApplication.foods[47].name,
             checked: isChecked,
-            icon: customizationState?.hasIcon == true ? true : false,
+            useThumbIcon: customizationState?.hasIcon ?? false,
             enabled: customizationState?.hasEnabled == true ? isEnabled : false,
             onCheckedChange: (value) {
               setState(() {

@@ -19,26 +19,26 @@ import 'package:flutter/material.dart';
 class OdsSegmentedButton<T> extends StatefulWidget {
   /// Creates an ODS RadioButton.
   const OdsSegmentedButton({
-    Key? key,
+    super.key,
     required this.selected,
     required this.segments,
     required this.onSelectionChanged,
     this.multiSelectionEnabled = true,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   /// The function that is called when the selection changes.
   /// The callback's parameter indicates which of the segments are selected.
   final void Function(Set<T>)? onSelectionChanged;
 
-  /// The set of [ButtonSegment.values] that indicate which [segments] are selected.
+  /// The set of [ButtonSegment] `value`s that indicate which [segments] are selected.
   final Set<T> selected;
 
   /// Determines if multiple segments can be selected at one time.
-  final bool? multiSelectionEnabled;
+  final bool multiSelectionEnabled;
 
   /// Controls the enabled state of the segmented button. When false, this segmented button will not be clickable.
-  final bool? enabled;
+  final bool enabled;
 
   /// Descriptions of the segments in the button.
   final List<ButtonSegment<T>> segments;
@@ -56,8 +56,7 @@ class _OdsSegmentedButtonState<T> extends State<OdsSegmentedButton<T>> {
             ? widget.segments.sublist(0, 5)
             : widget.segments,
         selected: widget.selected,
-        onSelectionChanged:
-            widget.enabled != false ? widget.onSelectionChanged : null,
+        onSelectionChanged: widget.enabled ? widget.onSelectionChanged : null,
         multiSelectionEnabled: true,
         //emptySelectionAllowed: true,
       ),

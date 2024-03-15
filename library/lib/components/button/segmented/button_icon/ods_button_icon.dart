@@ -27,14 +27,14 @@ class OdsButtonIcon extends StatefulWidget {
   /// * [selectedIcon] - The icon to display inside the button when [isSelected] is true. This property can be null
   /// * [style] - The button's style color.
   const OdsButtonIcon({
-    Key? key,
+    super.key,
     required this.icon,
     this.selectedIcon,
     this.isSelected = false,
     this.isEnabled = true,
     this.onClick,
     this.style = OdsButtonIconStyle.functionalStandard,
-  }) : super(key: key);
+  });
 
   /// The optional selection state of the icon button.
   final bool isSelected;

@@ -79,7 +79,7 @@ class _Body extends StatelessWidget {
           icon: customizationState?.hasIcon == true
               ? SvgPicture.asset('assets/ic_profile.svg')
               : null,
-          fullWidth: customizationState?.hasFullScreen ?? false,
+          isFullWidth: customizationState?.hasFullScreen ?? false,
           style: functionalStyle,
         ),
       ),

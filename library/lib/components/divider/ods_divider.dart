@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 class OdsDivider extends StatelessWidget {
   const OdsDivider({super.key});
 
-  final double _dividerOpacity = 0.12;
+  static const _dividerOpacity = 0.12;
 
   @override
   Widget build(BuildContext context) {

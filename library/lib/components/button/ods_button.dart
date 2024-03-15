@@ -19,16 +19,17 @@ import 'package:ods_flutter/theme/ods_palette.dart';
 ///
 ///
 class OdsButtonColors {
+  OdsButtonColors({
+    required this.background,
+    required this.text,
+    this.icon,
+    this.textDisabled,
+  });
+
   final Color background;
   final Color text;
   final Color? icon;
   final Color? textDisabled;
-
-  OdsButtonColors(
-      {required this.background,
-      required this.text,
-      this.icon,
-      this.textDisabled});
 }
 
 enum OdsButtonStyle {
@@ -51,13 +52,13 @@ class OdsButton extends StatefulWidget {
   /// * [onClick] - The action to be executed when the button is pressed.
   /// * [style] - The button's style color.
   const OdsButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onClick,
     this.icon,
     this.fullWidth = false,
     this.style = OdsButtonStyle.functionalDefault,
-  }) : super(key: key);
+  });
 
   /// The button's title displayed inside the button.
   final String text;
@@ -83,56 +84,59 @@ class _OdsButtonState extends State<OdsButton> {
   static const double minimumHeightButtonIcon = 40;
 
   OdsButtonColors getColorsForStyle(OdsButtonStyle? style) {
-    switch (style) {
-      case OdsButtonStyle.functionalPrimary:
-        return OdsButtonColors(
-            background: Theme.of(context).colorScheme.primary,
-            text: Theme.of(context).colorScheme.onPrimary,
-            icon: Theme.of(context).colorScheme.onPrimary,
-            textDisabled: grey500);
-      case OdsButtonStyle.functionalDefault:
-        return OdsButtonColors(
-            background: Theme.of(context).colorScheme.secondary,
-            text: Theme.of(context).colorScheme.onSecondary,
-            icon: Theme.of(context).colorScheme.onSecondary,
-            textDisabled: grey500);
-      case OdsButtonStyle.functionalPositive:
-        return OdsButtonColors(
-            background: positive200,
-            text: Theme.of(context).colorScheme.onSecondary,
-            icon: Theme.of(context).colorScheme.onSecondary,
-            textDisabled: grey500);
-      case OdsButtonStyle.functionalNegative:
-        return OdsButtonColors(
-            background: Theme.of(context).colorScheme.error,
-            text: Theme.of(context).colorScheme.onSecondary,
-            icon: Theme.of(context).colorScheme.onSecondary,
-            textDisabled: grey500);
-      default:
-        return OdsButtonColors(
-            background: Theme.of(context).colorScheme.primary,
-            text: black900,
-            textDisabled: grey500);
-    }
+    return switch (style) {
+      OdsButtonStyle.functionalPrimary => OdsButtonColors(
+          background: Theme.of(context).colorScheme.primary,
+          text: Theme.of(context).colorScheme.onPrimary,
+          icon: Theme.of(context).colorScheme.onPrimary,
+          textDisabled: grey500,
+        ),
+      OdsButtonStyle.functionalDefault => OdsButtonColors(
+          background: Theme.of(context).colorScheme.secondary,
+          text: Theme.of(context).colorScheme.onSecondary,
+          icon: Theme.of(context).colorScheme.onSecondary,
+          textDisabled: grey500,
+        ),
+      OdsButtonStyle.functionalPositive => OdsButtonColors(
+          background: positive200,
+          text: Theme.of(context).colorScheme.onSecondary,
+          icon: Theme.of(context).colorScheme.onSecondary,
+          textDisabled: grey500,
+        ),
+      OdsButtonStyle.functionalNegative => OdsButtonColors(
+          background: Theme.of(context).colorScheme.error,
+          text: Theme.of(context).colorScheme.onSecondary,
+          icon: Theme.of(context).colorScheme.onSecondary,
+          textDisabled: grey500,
+        ),
+      null => OdsButtonColors(
+          background: Theme.of(context).colorScheme.primary,
+          text: black900,
+          textDisabled: grey500,
+        )
+    };
   }
 
   @override
   Widget build(BuildContext context) {
     final styleButtonColor = getColorsForStyle(widget.style);
 
-    if (widget.icon != null && widget.fullWidth == false) {
+    if (widget.icon != null && !widget.fullWidth) {
       return SizedBox(
         child: FilledButton.icon(
           style: FilledButton.styleFrom(
             minimumSize:
                 const Size(minimumWidthButtonIcon, minimumHeightButtonIcon),
             padding: const EdgeInsets.fromLTRB(
-                spacingM, spacingS, spacingL, spacingS),
+              spacingM,
+              spacingS,
+              spacingL,
+              spacingS,
+            ),
             backgroundColor: styleButtonColor.background,
           ),
           onPressed: widget.onClick,
           icon: ExcludeSemantics(
-            excluding: true,
             child: widget.onClick != null
                 ? colorDefaultFilter()
                 : _colorEnableFilter(),
@@ -149,13 +153,12 @@ class _OdsButtonState extends State<OdsButton> {
       );
     }
 
-    if (widget.icon != null && widget.fullWidth == true) {
+    if (widget.icon != null && widget.fullWidth) {
       return SizedBox(
         width: double.infinity,
         child: FilledButton.icon(
           onPressed: widget.onClick,
           icon: ExcludeSemantics(
-            excluding: true,
             child: widget.onClick != null
                 ? colorDefaultFilter()
                 : _colorEnableFilter(),
@@ -169,18 +172,20 @@ class _OdsButtonState extends State<OdsButton> {
             ),
           ),
           style: FilledButton.styleFrom(
-              backgroundColor: styleButtonColor.background),
+            backgroundColor: styleButtonColor.background,
+          ),
         ),
       );
     }
 
-    if (widget.fullWidth == true) {
+    if (widget.fullWidth) {
       return SizedBox(
         width: double.infinity,
         child: FilledButton(
           onPressed: widget.onClick,
           style: FilledButton.styleFrom(
-              backgroundColor: styleButtonColor.background),
+            backgroundColor: styleButtonColor.background,
+          ),
           child: Text(
             widget.text,
             style: TextStyle(

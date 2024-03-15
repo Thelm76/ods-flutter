@@ -20,10 +20,10 @@ import 'package:ods_flutter/guidelines/spacings.dart';
 class OdsSheetsBottom extends StatefulWidget {
   /// Creates an ODS Sheets Bottom.
   const OdsSheetsBottom({
-    Key? key,
+    super.key,
     required this.title,
     required this.sheetContent,
-  }) : super(key: key);
+  });
 
   /// The title of the sheet bottom.
   final String title;
@@ -37,7 +37,7 @@ class OdsSheetsBottom extends StatefulWidget {
 
 class _OdsSheetsBottomState extends State<OdsSheetsBottom> {
   bool expanded = false;
-  double chevronTurns = 0.0;
+  double chevronTurns = 0;
 
   void _changeChevronRotation() {
     setState(() => chevronTurns += 0.5);
@@ -45,9 +45,9 @@ class _OdsSheetsBottomState extends State<OdsSheetsBottom> {
 
   @override
   Widget build(BuildContext context) {
-    double collapsedHeight = Platform.isAndroid ? 80 : 91;
+    final collapsedHeight = Platform.isAndroid ? 80.0 : 91.0;
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(spacingXl),
@@ -76,7 +76,7 @@ class _OdsSheetsBottomState extends State<OdsSheetsBottom> {
                     _expandCloseBottomSheet();
                   }
                 },
-                child: Container(
+                child: ColoredBox(
                   color: Colors.transparent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -108,7 +108,7 @@ class _OdsSheetsBottomState extends State<OdsSheetsBottom> {
                   }
                 },
                 child: MergeSemantics(
-                  child: Container(
+                  child: ColoredBox(
                     color: Colors.transparent,
                     child: Row(
                       children: [
@@ -143,7 +143,7 @@ class _OdsSheetsBottomState extends State<OdsSheetsBottom> {
                       child: widget.sheetContent,
                     ),
                   ),
-                )
+                ),
             ],
           ),
         ),
@@ -151,7 +151,7 @@ class _OdsSheetsBottomState extends State<OdsSheetsBottom> {
     );
   }
 
-  _expandCloseBottomSheet() {
+  void _expandCloseBottomSheet() {
     setState(() {
       expanded = !expanded;
       _changeChevronRotation();

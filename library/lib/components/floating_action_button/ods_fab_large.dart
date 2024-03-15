@@ -23,11 +23,11 @@ class OdsLargeFloatingActionButton extends StatefulWidget {
   /// * [onClick] - The callback function when the button is pressed.
   /// * [semanticsLabel] - The description accessibility button.
   const OdsLargeFloatingActionButton({
-    Key? key,
+    super.key,
     this.onClick,
     required this.icon,
-    this.semanticsLabel = "Floating action",
-  }) : super(key: key);
+    this.semanticsLabel = 'Floating action',
+  });
 
   /// The optional icon widget displayed inside the button.
   final Widget? icon;

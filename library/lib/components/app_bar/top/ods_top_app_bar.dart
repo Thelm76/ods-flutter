@@ -38,7 +38,7 @@ class OdsAppTopBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       actions: actions,
       leading: navigationIcon,
-      automaticallyImplyLeading: navigationIcon != null ? true : false,
+      automaticallyImplyLeading: navigationIcon != null,
       //centerTitle: true,
     );
   }

@@ -70,7 +70,7 @@ class OdsChipLeadingAvatar extends StatelessWidget {
 
     if (contentDescription != null) {
       circleAvatar = Semantics(
-        label: contentDescription!,
+        label: contentDescription,
         image: true,
         child: circleAvatar,
       );

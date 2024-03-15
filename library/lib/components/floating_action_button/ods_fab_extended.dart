@@ -22,11 +22,11 @@ class OdsExtendedFloatingActionButton extends StatefulWidget {
   /// * [onClick] - The callback function when the button is pressed.
   /// * [icon] - The icon widget displayed inside the button.
   const OdsExtendedFloatingActionButton({
-    Key? key,
+    super.key,
     this.onClick,
     required this.text,
     this.icon,
-  }) : super(key: key);
+  });
 
   /// The callback function when the button is pressed.
   final void Function()? onClick;

@@ -23,12 +23,12 @@ class OdsActionChip extends StatefulWidget {
   /// * [avatar] - Widget of the icon.
   /// * [onClick] - The action to be executed when the chips is pressed.
   const OdsActionChip({
-    Key? key,
+    super.key,
     required this.text,
     this.leadingIcon,
     this.onClick,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   /// The app bar title displayed.
   final String text;
@@ -40,7 +40,7 @@ class OdsActionChip extends StatefulWidget {
   final Widget? leadingIcon;
 
   /// Specifies whether the chips is selected or not.
-  final bool? enabled;
+  final bool enabled;
 
   @override
   State<OdsActionChip> createState() => _OdsActionChipState();
@@ -55,7 +55,7 @@ class _OdsActionChipState extends State<OdsActionChip> {
       child: ActionChip(
         label: Text(widget.text),
         avatar: widget.leadingIcon,
-        onPressed: widget.enabled != false ? widget.onClick : null,
+        onPressed: widget.enabled ? widget.onClick : null,
       ),
     );
   }

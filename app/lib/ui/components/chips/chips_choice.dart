@@ -93,7 +93,7 @@ class _BodyState extends State<_Body> {
                       image:
                           NetworkImage(OdsApplication.foods[index + 41].image),
                     ),
-                  // TODO(ods_team): Handle this case
+                  // TODO(ods-team): Handle this case
                   ChipsEnum.icon => null,
                 };
 

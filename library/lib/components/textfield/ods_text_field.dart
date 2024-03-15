@@ -19,6 +19,26 @@ import 'package:ods_flutter/guidelines/spacings.dart';
 ///
 ///.
 class OdsTextField extends StatefulWidget {
+  const OdsTextField({
+    super.key,
+    this.controller,
+    this.onClick,
+    this.enabled = true,
+    this.readOnly = false,
+    this.errorMessage,
+    this.label,
+    this.placeholder,
+    this.keyboardType,
+    this.keyboardActions,
+    this.trailingText,
+    this.trailingIcon,
+    this.leadingIcon,
+    this.characterCounter,
+    this.maxLines,
+    this.textCapitalization = false,
+    this.onValueChange,
+  });
+
   /// A controller for an editable text field
   final TextEditingController? controller;
 
@@ -26,7 +46,7 @@ class OdsTextField extends StatefulWidget {
   final Function(String)? onClick;
 
   /// If false the text field is disabled. It ignores taps and its decoration is rendered in grey
-  final bool? enabled;
+  final bool enabled;
 
   /// Controls the editable state of the text field.
   /// When `true`, the text field can not be modified, however, a user can focus it and copy text from it.
@@ -65,30 +85,10 @@ class OdsTextField extends StatefulWidget {
   final int? maxLines;
 
   /// Configures how the platform keyboard will select an uppercase or lowercase keyboard
-  final bool? textCapitalization;
+  final bool textCapitalization;
 
   /// Callback that is triggered when the input service updates the text. An updated text comes as a parameter of the callback
   final Function(String)? onValueChange;
-
-  const OdsTextField({
-    Key? key,
-    this.controller,
-    this.onClick,
-    this.enabled,
-    this.readOnly = false,
-    this.errorMessage,
-    this.label,
-    this.placeholder,
-    this.keyboardType,
-    this.keyboardActions,
-    this.trailingText,
-    this.trailingIcon,
-    this.leadingIcon,
-    this.characterCounter,
-    this.maxLines,
-    this.textCapitalization = false,
-    this.onValueChange,
-  }) : super(key: key);
 
   @override
   State<OdsTextField> createState() => _OdsTextFieldState();
@@ -107,7 +107,7 @@ class _OdsTextFieldState extends State<OdsTextField> {
       keyboardType: widget.keyboardType,
       textInputAction: widget.keyboardActions,
       onChanged: widget.onValueChange,
-      textCapitalization: widget.textCapitalization == true
+      textCapitalization: widget.textCapitalization
           ? TextCapitalization.characters
           : TextCapitalization.none,
       keyboardAppearance: Theme.of(context).brightness == Brightness.dark
@@ -123,7 +123,11 @@ class _OdsTextFieldState extends State<OdsTextField> {
         suffixIcon: widget.trailingText != null
             ? Padding(
                 padding: const EdgeInsets.fromLTRB(
-                    spacingM, spacingM, spacingM, spacingM),
+                  spacingM,
+                  spacingM,
+                  spacingM,
+                  spacingM,
+                ),
                 child: Text(
                   widget.trailingText!,
                   style:

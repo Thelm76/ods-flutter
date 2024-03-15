@@ -19,8 +19,17 @@ import 'package:ods_flutter/guidelines/spacings.dart';
 ///
 ///.
 class OdsExposedDropdownMenu<T> extends StatefulWidget {
+  const OdsExposedDropdownMenu({
+    super.key,
+    required this.items,
+    required this.label,
+    this.leadingIcon,
+    this.selectedItem,
+    this.enabled = true,
+  });
+
   /// Descriptions of the menu items in the [OdsExposedDropdownMenu]
-  final List<DropdownMenuEntry> items;
+  final List<DropdownMenuEntry<T>> items;
 
   /// Text describes the input field
   final String label;
@@ -32,29 +41,21 @@ class OdsExposedDropdownMenu<T> extends StatefulWidget {
   final bool enabled;
 
   /// The callback is called when a selection is made.
-  final Function(T)? selectedItem;
-
-  const OdsExposedDropdownMenu({
-    Key? key,
-    required this.items,
-    required this.label,
-    this.leadingIcon,
-    this.selectedItem,
-    this.enabled = true,
-  }) : super(key: key);
+  final Function(T?)? selectedItem;
 
   @override
-  State<OdsExposedDropdownMenu> createState() => _OdsExposedDropdownMenuState();
+  State<OdsExposedDropdownMenu<T>> createState() =>
+      _OdsExposedDropdownMenuState();
 }
 
-class _OdsExposedDropdownMenuState extends State<OdsExposedDropdownMenu> {
+class _OdsExposedDropdownMenuState<T> extends State<OdsExposedDropdownMenu<T>> {
   @override
   void initState() {
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

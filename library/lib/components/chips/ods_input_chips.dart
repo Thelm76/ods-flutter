@@ -25,14 +25,14 @@ class OdsInputChip extends StatefulWidget {
   /// * [onClick] - The action to be executed when the chips pressed is selected.
   /// * [onCancel] - The action to be executed when the chips deleted is selected.
   const OdsInputChip({
-    Key? key,
+    super.key,
     required this.text,
     this.leadingAvatar,
     this.leadingIcon,
     this.onClick,
     this.onCancel,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   /// The app bar title displayed.
   final String text;
@@ -67,7 +67,7 @@ class _OdsInputChipsState extends State<OdsInputChip> {
           iconTheme: const IconThemeData(color: white100),
           checkmarkColor: black900,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(20),
           ),
           side: BorderSide(
             color: Theme.of(context).brightness == Brightness.light
@@ -80,8 +80,7 @@ class _OdsInputChipsState extends State<OdsInputChip> {
         child: InputChip(
           label: Text(widget.text),
           avatar: widget.leadingAvatar ?? widget.leadingIcon,
-          deleteIcon: null,
-          onPressed: widget.enabled != false ? widget.onClick : null,
+          onPressed: widget.enabled ? widget.onClick : null,
           onDeleted: widget.onCancel,
         ),
       ),

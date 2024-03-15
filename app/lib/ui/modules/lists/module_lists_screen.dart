@@ -109,7 +109,7 @@ class _BodyState extends State<_Body> {
                     ListTrailingEnum.trailingText
                 ? l10n.listTrailingExampleDetails
                 : null,
-            divider: true,
+            showDivider: true,
             value: isSelectionControl,
             onChangedSwitch: customizationState?.selectedTrailingElement ==
                     ListTrailingEnum.trailingSwitch

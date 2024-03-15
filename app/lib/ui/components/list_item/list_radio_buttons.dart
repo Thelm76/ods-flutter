@@ -60,9 +60,9 @@ class _Body extends StatefulWidget {
 }
 
 class __BodyState extends State<_Body> {
-  bool? isChecked0 = true;
-  bool? isChecked1 = false;
-  bool? isChecked2 = false;
+  bool isChecked0 = true;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
   bool isEnable = true;
   bool isIndeterminate = true;
 

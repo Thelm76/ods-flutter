@@ -24,12 +24,12 @@ class OdsOutlinedButton extends StatefulWidget {
   /// * [icon] - Widget of the icon.
   /// * [fullWidth] - Specifies whether the button should expand to full screen width.
   const OdsOutlinedButton({
-    Key? key,
+    super.key,
     required this.text,
     this.onClick,
     this.icon,
     this.fullWidth = false,
-  }) : super(key: key);
+  });
 
   /// The button's title displayed inside the button.
   final String text;
@@ -50,11 +50,10 @@ class OdsOutlinedButton extends StatefulWidget {
 class _OdsOutlinedButtonState extends State<OdsOutlinedButton> {
   @override
   Widget build(BuildContext context) {
-    if (widget.icon != null && widget.fullWidth == false) {
+    if (widget.icon != null && !widget.fullWidth) {
       return OutlinedButton.icon(
         onPressed: widget.onClick,
         icon: ExcludeSemantics(
-          excluding: true,
           child: widget.onClick != null
               ? colorDefaultFilter()
               : _colorEnableFilter(),
@@ -63,13 +62,12 @@ class _OdsOutlinedButtonState extends State<OdsOutlinedButton> {
       );
     }
 
-    if (widget.icon != null && widget.fullWidth == true) {
+    if (widget.icon != null && widget.fullWidth) {
       return SizedBox(
         width: double.infinity,
         child: OutlinedButton.icon(
           onPressed: widget.onClick,
           icon: ExcludeSemantics(
-            excluding: true,
             child: widget.onClick != null
                 ? colorDefaultFilter()
                 : _colorEnableFilter(),
@@ -79,7 +77,7 @@ class _OdsOutlinedButtonState extends State<OdsOutlinedButton> {
       );
     }
 
-    if (widget.fullWidth == true) {
+    if (widget.fullWidth) {
       return SizedBox(
         width: double.infinity,
         child: OutlinedButton(
@@ -99,7 +97,9 @@ class _OdsOutlinedButtonState extends State<OdsOutlinedButton> {
   Widget colorDefaultFilter() {
     return ColorFiltered(
       colorFilter: ColorFilter.mode(
-          Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+        Theme.of(context).colorScheme.secondary,
+        BlendMode.srcIn,
+      ),
       child: widget.icon,
     );
   }

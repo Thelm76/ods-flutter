@@ -22,7 +22,7 @@ import 'package:ods_flutter/guidelines/spacings.dart';
 /// A ripple effect is managed on card click.
 class OdsVerticalHeaderFirstCard extends StatefulWidget {
   const OdsVerticalHeaderFirstCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.image,
     this.thumbnail,
@@ -31,19 +31,19 @@ class OdsVerticalHeaderFirstCard extends StatefulWidget {
     this.firstButton,
     this.secondButton,
     this.onClick,
-  }) : super(key: key);
+  });
 
   static const double _imageHeight = 200;
 
   /// The image displayed in the card.
-  ///TODO For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
+  // TODO(ods-team): For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
   final OdsCardThumbnail? thumbnail;
 
   /// The card's title displayed below the image.
   final String title;
 
   /// The image displayed in the card.
-  ///TODO For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
+  // TODO(ods-team): For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
   final OdsCardImage image;
 
   /// The optional card's subtitle displayed below the title.
@@ -105,10 +105,11 @@ class _OdsVerticalHeaderFirstCardState
                 if (widget.text != null && widget.text!.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: spacingM,
-                        right: spacingM,
-                        top: spacingM,
-                        bottom: spacingXs),
+                      left: spacingM,
+                      right: spacingM,
+                      top: spacingM,
+                      bottom: spacingXs,
+                    ),
                     child: Text(
                       widget.text!,
                     ),

@@ -21,18 +21,18 @@ import 'package:ods_flutter/components/divider/ods_divider.dart';
 class OdsListItem extends StatefulWidget {
   /// Creates an ODS List selection.
   const OdsListItem({
-    Key? key,
+    super.key,
     required this.title,
     this.subtitle,
     this.image,
     this.text,
     this.icon,
-    this.value,
+    this.value = false,
     this.onChangedSwitch,
     this.onChangedCheckBox,
-    this.divider,
+    this.showDivider = false,
     this.onClick,
-  }) : super(key: key);
+  });
 
   /// The list's title .
   final String title;
@@ -41,7 +41,7 @@ class OdsListItem extends StatefulWidget {
   final String? subtitle;
 
   /// The image displayed in the list.
-  ///TODO For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
+  // TODO(ods-team): For the moment the fit of the image is handled by the provided image. It should be done in the library but we need help to do that!
   final Widget? image;
 
   /// The text displayed in the list trailing.
@@ -51,16 +51,16 @@ class OdsListItem extends StatefulWidget {
   final Widget? icon;
 
   /// The optional switch or checkbox.
-  final bool? value;
+  final bool value;
 
   /// The action executed change the switch.
-  final Function(bool?)? onChangedSwitch;
+  final ValueChanged<bool?>? onChangedSwitch;
 
   /// The action executed change the checkbox.
-  final Function(bool?)? onChangedCheckBox;
+  final ValueChanged<bool?>? onChangedCheckBox;
 
   /// The divider displayed in the list.
-  final bool? divider;
+  final bool showDivider;
 
   /// The action to be executed when the item is pressed.
   final void Function()? onClick;
@@ -90,7 +90,7 @@ class _OdsListItemState extends State<OdsListItem> {
                         style: Theme.of(context).textTheme.bodyMedium,
                       )
                     : null,
-                value: widget.value ?? false,
+                value: widget.value,
                 onChanged: widget.onChangedSwitch,
               ),
             if (widget.onChangedCheckBox != null)
@@ -106,7 +106,7 @@ class _OdsListItemState extends State<OdsListItem> {
                         style: Theme.of(context).textTheme.bodyMedium,
                       )
                     : null,
-                value: widget.value ?? false,
+                value: widget.value,
                 onChanged: widget.onChangedCheckBox,
               ),
             if (widget.onChangedSwitch == null &&
@@ -132,7 +132,7 @@ class _OdsListItemState extends State<OdsListItem> {
                 ),
                 onTap: widget.onClick,
               ),
-            if (widget.divider != null) const OdsDivider(),
+            if (widget.showDivider) const OdsDivider(),
           ],
         ),
       ),

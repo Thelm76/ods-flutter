@@ -118,7 +118,7 @@ class _Body extends StatelessWidget {
             imagePosition: customizationState?.selectedElement == CardEnum.start
                 ? OdsHorizontalCardImagePosition.start
                 : OdsHorizontalCardImagePosition.end,
-            divider: customizationState!.hasDivider == true ? true : false,
+            hasDivider: customizationState!.hasDivider == true ? true : false,
             onClick: customizationState.clickable ? () {} : null,
           ),
         ),

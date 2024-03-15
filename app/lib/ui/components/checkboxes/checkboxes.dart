@@ -58,7 +58,7 @@ class _Body extends StatefulWidget {
 }
 
 class __BodyState extends State<_Body> {
-  bool? isChecked = true;
+  bool isChecked = true;
   bool isEnable = true;
   bool isIndeterminate = true;
 
@@ -80,7 +80,7 @@ class __BodyState extends State<_Body> {
                 indeterminate: true,
                 onCheckedChange: (value) {
                   setState(() {
-                    isChecked = value;
+                    isChecked = value ?? false;
                   });
                 },
               ),

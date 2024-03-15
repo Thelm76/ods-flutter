@@ -27,13 +27,13 @@ class OdsNavigationRail extends StatefulWidget {
   /// * [leadingIconFirst] - The first leading widget in the rail that is placed above the destinations.
   /// * [leadingIconSecond] - The second leading widget in the rail that is placed above the destinations.
   const OdsNavigationRail({
-    Key? key,
+    super.key,
     required this.selectedIndex,
     required this.destinations,
     this.onDestinationSelected,
     this.leadingIconFirst,
     this.leadingIconSecond,
-  }) : super(key: key);
+  });
 
   /// The index into [destinations] for the current selected NavigationRailDestination or null if no destination is selected.
   final int selectedIndex;

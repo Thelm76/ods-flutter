@@ -89,7 +89,7 @@ extension OdsSnackbarsTwoLinesExtension on OdsSnackbar {
     String? actionLabel,
     VoidCallback? onPressed,
   }) {
-    SnackBar snackbar = SnackBar(
+    final snackbar = SnackBar(
       width: double.infinity,
       content: Text(message, maxLines: 2),
       action: actionLabel != null && actionLabel.isNotEmpty && onPressed != null
@@ -112,7 +112,7 @@ extension OdsSnackbarsLongerActionExtension on OdsSnackbar {
     String? actionLabel,
     VoidCallback? onPressed,
   }) {
-    SnackBar snackbar = SnackBar(
+    final snackbar = SnackBar(
       width: double.infinity,
       content: Column(
         mainAxisSize: MainAxisSize.min,

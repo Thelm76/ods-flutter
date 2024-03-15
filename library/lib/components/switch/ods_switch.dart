@@ -20,24 +20,25 @@ import 'package:ods_flutter/l10n/l10n.dart';
 class OdsSwitch extends StatefulWidget {
   /// Creates an ODS Switch .
   const OdsSwitch({
-    Key? key,
+    super.key,
     required this.checked,
     required this.onCheckedChange,
-    this.icon,
+    this.useThumbIcon = false,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   /// The value checked.
   final bool checked;
 
   /// A callback function to handle changes in the checked state.
+  // ignore: avoid_positional_boolean_parameters
   final void Function(bool)? onCheckedChange;
 
   /// The icon to use on the thumb of this switch.
-  final bool? icon;
+  final bool useThumbIcon;
 
   /// Controls the enabled state of the switch. When false, this button will not be clickable.
-  final bool? enabled;
+  final bool enabled;
 
   @override
   State<OdsSwitch> createState() => _OdsSwitchState();
@@ -52,7 +53,7 @@ class _OdsSwitchState extends State<OdsSwitch> {
         ? l10n.componentSwitchesChecked
         : l10n.componentSwitchesUnchecked;
 
-    final odsSwitchIcon = OdsSwitchIcon(context);
+    final odsSwitchIcon = OdsSwitchIcon(Theme.of(context));
 
     return Semantics(
       value: switchValue,
@@ -60,9 +61,10 @@ class _OdsSwitchState extends State<OdsSwitch> {
       button: true,
       excludeSemantics: true,
       child: Switch(
-          thumbIcon: widget.icon == true ? odsSwitchIcon.thumbIcon : null,
-          value: widget.checked,
-          onChanged: widget.enabled == true ? widget.onCheckedChange : null),
+        thumbIcon: widget.useThumbIcon ? odsSwitchIcon.thumbIcon : null,
+        value: widget.checked,
+        onChanged: widget.enabled ? widget.onCheckedChange : null,
+      ),
     );
   }
 }

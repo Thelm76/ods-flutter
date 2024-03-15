@@ -27,8 +27,11 @@ enum OdsButtonIconStyle {
         _ => colors.secondary,
       };
 
-  ButtonStyle? getButtonStyle(ColorScheme colors,
-      {required bool selected, required bool enabled}) {
+  ButtonStyle? getButtonStyle(
+    ColorScheme colors, {
+    required bool selected,
+    required bool enabled,
+  }) {
     return switch (this) {
       functionalStandard => null,
       functionalFilled => IconButton.styleFrom(

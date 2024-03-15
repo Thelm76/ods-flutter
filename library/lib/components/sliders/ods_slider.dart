@@ -37,14 +37,14 @@ class OdsSlider extends StatefulWidget {
   /// * behave as a continuous slider and allow to choose any value from the range specified. Must not be negative.
   /// * [displayValue] - The button's style color.
   const OdsSlider({
-    Key? key,
+    super.key,
     required this.value,
     this.startIcon,
     this.endIcon,
     this.enabled = true,
     this.steps,
     this.displayValue,
-  }) : super(key: key);
+  });
 
   /// Current value of the slider
   final double value;
@@ -56,7 +56,7 @@ class OdsSlider extends StatefulWidget {
   final Widget? endIcon;
 
   /// Controls the enabled state of the slider.
-  final bool? enabled;
+  final bool enabled;
 
   /// The division step of the slider.
   final int? steps;
@@ -97,7 +97,7 @@ class _OdsSliderState extends State<OdsSlider> {
                 label: widget.displayValue != null
                     ? currentValue.round().toString()
                     : null,
-                onChanged: widget.enabled == true
+                onChanged: widget.enabled
                     ? (value) {
                         setState(
                           () {

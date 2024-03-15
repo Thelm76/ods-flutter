@@ -58,9 +58,9 @@ class _Body extends StatefulWidget {
 }
 
 class __BodyState extends State<_Body> {
-  bool? isChecked0 = true;
-  bool? isChecked1 = false;
-  bool? isChecked2 = false;
+  bool isChecked0 = true;
+  bool isChecked1 = false;
+  bool isChecked2 = false;
   bool isEnable = true;
   bool isIndeterminate = true;
 
@@ -81,7 +81,7 @@ class __BodyState extends State<_Body> {
               indeterminate: true,
               onCheckedChange: (value) {
                 setState(() {
-                  isChecked0 = value;
+                  isChecked0 = value ?? false;
                 });
               },
             ),
@@ -93,7 +93,7 @@ class __BodyState extends State<_Body> {
               indeterminate: true,
               onCheckedChange: (value) {
                 setState(() {
-                  isChecked1 = value;
+                  isChecked1 = value ?? false;
                 });
               },
             ),
@@ -105,7 +105,7 @@ class __BodyState extends State<_Body> {
               indeterminate: true,
               onCheckedChange: (value) {
                 setState(() {
-                  isChecked2 = value;
+                  isChecked2 = value ?? false;
                 });
               },
             ),

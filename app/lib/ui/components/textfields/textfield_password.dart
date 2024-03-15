@@ -122,9 +122,9 @@ class _BodyState extends State<_Body> {
         label: l10n.componentElementLabel,
         characterCounter:
             customizationState?.characterCount == true ? 20 : null,
-        textCapitalization:
+        doCapitalizeText:
             customizationState?.capitalization == true ? true : false,
-        visualisationIcon:
+        hasVisualisationIcon:
             customizationState?.visualisationIcon == true ? true : false,
       ),
     );

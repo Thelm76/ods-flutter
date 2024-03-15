@@ -11,8 +11,7 @@
  */
 
 import 'package:flutter/material.dart';
-
-import 'ods_chip_common.dart';
+import 'package:ods_flutter/components/chips/ods_chip_common.dart';
 
 /// ODS Design Choice Chips.
 ///
@@ -28,19 +27,19 @@ class OdsChoiceChip extends StatefulWidget {
   /// * [selected] - Specifies whether the chips is selected or not.
   ///
   const OdsChoiceChip({
-    Key? key,
+    super.key,
     required this.text,
     this.onClick,
     this.enabled = true,
     this.selected = false,
     this.leadingAvatar,
-  }) : super(key: key);
+  });
 
   /// Text to be displayed into the chip.
   final String text;
 
   /// Callback called on chip click
-  final void Function(bool?)? onClick;
+  final ValueChanged<bool?>? onClick;
 
   /// Specifies whether the chips is selected or not.
   final bool enabled;
@@ -63,7 +62,7 @@ class _OdsChoiceChipState extends State<OdsChoiceChip> {
       label: widget.text,
       child: ChoiceChip(
         label: Text(widget.text),
-        onSelected: widget.enabled != false ? widget.onClick : null,
+        onSelected: widget.enabled ? widget.onClick : null,
         selected: widget.selected,
         avatar: widget.leadingAvatar,
       ),

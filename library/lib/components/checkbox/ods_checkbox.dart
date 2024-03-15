@@ -20,21 +20,21 @@ import 'package:ods_flutter/l10n/l10n.dart';
 class OdsCheckbox extends StatefulWidget {
   /// Creates an ODS Checkboxes.
   const OdsCheckbox({
-    Key? key,
+    super.key,
     required this.checked,
     required this.onCheckedChange,
     this.enabled = true,
     this.indeterminate = false,
-  }) : super(key: key);
+  });
 
   /// The value.
   final bool? checked;
 
   /// A callback function to handle changes in the checked state.
-  final void Function(bool?)? onCheckedChange;
+  final ValueChanged<bool?>? onCheckedChange;
 
   /// Controls the enabled state of the checkbox. When false, this button will not be clickable.
-  final bool? enabled;
+  final bool enabled;
 
   /// A flag indicating whether the widget is in an indeterminate state.
   final bool indeterminate;
@@ -48,9 +48,10 @@ class _OdsCheckboxState extends State<OdsCheckbox> {
   Widget build(BuildContext context) {
     final l10n = context.odsL10n;
 
-    final checkBoxValue = widget.checked == null
+    final safeChecked = widget.checked;
+    final checkBoxValue = safeChecked == null
         ? l10n.componentCheckboxesIndeterminate
-        : widget.checked ?? false
+        : safeChecked
             ? l10n.componentCheckboxesChecked
             : l10n.componentCheckboxesUnchecked;
 
@@ -62,7 +63,7 @@ class _OdsCheckboxState extends State<OdsCheckbox> {
       child: Checkbox(
         autofocus: true,
         value: widget.checked,
-        onChanged: widget.enabled != false ? widget.onCheckedChange : null,
+        onChanged: widget.enabled ? widget.onCheckedChange : null,
         tristate: widget.indeterminate,
       ),
     );
