@@ -49,7 +49,7 @@ class _ComponentMenuDropdownState extends State<ComponentMenuDropdown> {
         ),
         key: _scaffoldKey,
         appBar: MainAppBar(AppLocalizations.of(context)!.componentMenuDropdown),
-        body: _Body(),
+        body: SafeArea(child: _Body()),
       ),
     );
   }
@@ -73,20 +73,21 @@ class __BodyState extends State<_Body> {
         ? Colors.grey[600]
         : Colors.grey[400];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(spacingM),
-          child: Text(
-            AppLocalizations.of(context)!.componentMenuDropdownDescription,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ),
-        Expanded(
-          child: ListView(
-            children: <Widget>[
-              ListTile(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: spacingXxl),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(spacingM),
+              child: Text(
+                AppLocalizations.of(context)!.componentMenuDropdownDescription,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+            MergeSemantics(
+              child: ListTile(
                 title: Text(recipe.title,
                     style: Theme.of(context).textTheme.titleMedium),
                 subtitle: Text(recipe.subtitle),
@@ -158,10 +159,10 @@ class __BodyState extends State<_Body> {
                   },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
