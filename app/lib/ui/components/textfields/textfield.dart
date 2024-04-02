@@ -13,6 +13,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/ods_flutter_app_localizations.dart';
 import 'package:ods_flutter/components/chips/ods_choice_chips.dart';
@@ -118,7 +119,7 @@ class _Body extends StatelessWidget {
     ///Keyboard action
     switch (customizationState?.selectedKeyboardAction) {
       case KeyboardActionEnum.none:
-        if (Platform.isAndroid) {
+        if (kIsWeb || Platform.isAndroid) {
           keyboardAction = TextInputAction.none;
         } else if (Platform.isIOS) {
           keyboardAction = TextInputAction.unspecified;
@@ -140,7 +141,7 @@ class _Body extends StatelessWidget {
         keyboardAction = TextInputAction.send;
         break;
       case KeyboardActionEnum.previous:
-        if (Platform.isAndroid) {
+        if (kIsWeb || Platform.isAndroid) {
           keyboardAction = TextInputAction.previous;
         }
         break;
