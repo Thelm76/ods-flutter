@@ -149,6 +149,8 @@ class _Body extends StatelessWidget {
       case KeyboardActionEnum.next:
         keyboardAction = TextInputAction.next;
         break;
+      case null:
+        break;
     }
 
     return Padding(

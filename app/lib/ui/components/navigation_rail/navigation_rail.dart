@@ -113,6 +113,8 @@ class _NavRailDemoState extends State<_NavRailDemo> {
           semanticsLabel: 'Add', //Optional
         );
         break;
+      case null:
+        break;
     }
 
     return Row(

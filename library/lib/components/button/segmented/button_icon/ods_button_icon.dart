@@ -69,7 +69,7 @@ class OdsButtonIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme colors = Theme.of(context).colorScheme;
-    ButtonStyle? getColorsForStyle(OdsButtonIconStyle? style) {
+    ButtonStyle? getColorsForStyle(OdsButtonIconStyle style) {
       switch (style) {
         case OdsButtonIconStyle.functionalStandard:
           return null;
