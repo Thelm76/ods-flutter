@@ -14,11 +14,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/ods_flutter_app_localizations.dart';
 import 'package:ods_flutter/components/button/ods_button.dart';
 import 'package:ods_flutter/components/snackbars/ods_snackbar.dart';
 import 'package:ods_flutter/guidelines/spacings.dart';
 import 'package:ods_flutter/theme/ods_palette.dart';
+import 'package:ods_flutter_demo/l10n/l10n.dart';
 import 'package:ods_flutter_demo/ui/main_app_bar.dart';
 
 class ColourTheme extends StatefulWidget {
@@ -35,9 +35,9 @@ class _ColourThemeState extends State<ColourTheme> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
-      appBar: MainAppBar(
-          AppLocalizations.of(context)!.guidelinesColoursThemeVariantTitle),
+      appBar: MainAppBar(l10n.guidelinesColoursThemeVariantTitle),
       body: _Body(),
     );
   }

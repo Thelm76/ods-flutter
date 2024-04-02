@@ -14,11 +14,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/ods_flutter_app_localizations.dart';
 import 'package:ods_flutter/components/button/ods_button.dart';
 import 'package:ods_flutter/components/snackbars/ods_snackbar.dart';
 import 'package:ods_flutter/guidelines/spacings.dart';
 import 'package:ods_flutter/theme/ods_palette.dart';
+import 'package:ods_flutter_demo/l10n/gen/ods_flutter_app_localizations.dart';
 import 'package:ods_flutter_demo/ui/main_app_bar.dart';
 
 class ColourPalette extends StatefulWidget {
