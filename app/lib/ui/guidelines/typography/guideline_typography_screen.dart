@@ -12,6 +12,7 @@
 
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ods_flutter/components/divider/ods_divider.dart';
 import 'package:ods_flutter/guidelines/spacings.dart';
@@ -87,7 +88,7 @@ class GuidelineTypographyScreen extends StatelessWidget {
               padding: EdgeInsets.all(spacingM),
               child: Column(
                 children: [
-                  Platform.isAndroid
+                  kIsWeb || Platform.isAndroid
                       ? Text(
                           l10n.guidelinesTypographyAndroidDescription,
                           style: Theme.of(context).textTheme.bodyMedium,

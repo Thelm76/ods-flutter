@@ -20,7 +20,7 @@ import 'package:ods_flutter/l10n/l10n.dart';
 /// It allows for handling the OdsListSwitch list state and triggering a callback when its state changes.
 /// * [checked] determines whether this switch is on or off.
 /// * [onCheckedChange] is called when the user toggles the switch on or off.
-class OdsListSwitch extends StatefulWidget {
+class OdsListSwitch extends StatelessWidget {
   /// Creates an ODS Switch list.
   const OdsListSwitch({
     Key? key,
@@ -47,34 +47,29 @@ class OdsListSwitch extends StatefulWidget {
   final bool? enabled;
 
   @override
-  State<OdsListSwitch> createState() => _OdsListSwitchState();
-}
-
-class _OdsListSwitchState extends State<OdsListSwitch> {
-  @override
   Widget build(BuildContext context) {
     final l10n = context.odsL10n;
 
-    final switchValue = widget.checked
+    String switchValue = checked
         ? l10n.componentSwitchesChecked
         : l10n.componentSwitchesUnchecked;
 
     final odsSwitchIcon = OdsSwitchIcon(context);
 
     return Semantics(
-      label: widget.title,
+      label: title,
       value: switchValue,
-      enabled: widget.enabled,
+      enabled: enabled,
       button: true,
       excludeSemantics: true,
       child: SwitchListTile(
         title: Text(
-          widget.title,
+          title,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        value: widget.checked,
-        onChanged: widget.enabled != false ? widget.onCheckedChange : null,
-        thumbIcon: widget.icon == true ? odsSwitchIcon.thumbIcon : null,
+        value: checked,
+        onChanged: enabled != false ? onCheckedChange : null,
+        thumbIcon: icon == true ? odsSwitchIcon.thumbIcon : null,
       ),
     );
   }

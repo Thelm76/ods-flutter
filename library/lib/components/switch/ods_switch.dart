@@ -17,7 +17,7 @@ import 'package:ods_flutter/l10n/l10n.dart';
 /// ODS OdsSwitch.
 ///
 ///  Switch is used to toggle the on/off state of a single setting.
-class OdsSwitch extends StatefulWidget {
+class OdsSwitch extends StatelessWidget {
   /// Creates an ODS Switch .
   const OdsSwitch({
     Key? key,
@@ -40,15 +40,10 @@ class OdsSwitch extends StatefulWidget {
   final bool? enabled;
 
   @override
-  State<OdsSwitch> createState() => _OdsSwitchState();
-}
-
-class _OdsSwitchState extends State<OdsSwitch> {
-  @override
   Widget build(BuildContext context) {
     final l10n = context.odsL10n;
 
-    final switchValue = widget.checked
+    String switchValue = checked
         ? l10n.componentSwitchesChecked
         : l10n.componentSwitchesUnchecked;
 
@@ -56,13 +51,13 @@ class _OdsSwitchState extends State<OdsSwitch> {
 
     return Semantics(
       value: switchValue,
-      enabled: widget.enabled,
+      enabled: enabled,
       button: true,
       excludeSemantics: true,
       child: Switch(
-          thumbIcon: widget.icon == true ? odsSwitchIcon.thumbIcon : null,
-          value: widget.checked,
-          onChanged: widget.enabled == true ? widget.onCheckedChange : null),
+          thumbIcon: icon == true ? odsSwitchIcon.thumbIcon : null,
+          value: checked,
+          onChanged: enabled == true ? onCheckedChange : null),
     );
   }
 }

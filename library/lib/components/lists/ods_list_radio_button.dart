@@ -17,7 +17,7 @@ import 'package:ods_flutter/l10n/l10n.dart';
 ///
 /// The OdsCheckbox widget represents a checkbox element that can be checked or unchecked.
 /// It allows for handling the checkbox state and triggering a callback when its state changes.
-class OdsListRadioButton<T> extends StatefulWidget {
+class OdsListRadioButton<T> extends StatelessWidget {
   /// Creates an ODS OdsListRadioButton.
   const OdsListRadioButton({
     Key? key,
@@ -44,31 +44,27 @@ class OdsListRadioButton<T> extends StatefulWidget {
   final bool? enabled;
 
   @override
-  State<OdsListRadioButton<T>> createState() => _OdsRadioButtonState<T>();
-}
-
-class _OdsRadioButtonState<T> extends State<OdsListRadioButton<T>> {
-  @override
   Widget build(BuildContext context) {
     final l10n = context.odsL10n;
-    String radioButtonValue = widget.value == widget.groupValue
+
+    String radioButtonValue = value == groupValue
         ? l10n.componentRadioButtonSelected
         : l10n.componentRadioButtonUnselected;
 
     return Semantics(
-      label: widget.title,
+      label: title,
       value: radioButtonValue,
-      enabled: widget.enabled,
+      enabled: enabled,
       hint: l10n.componentRadioButton,
       excludeSemantics: true,
       child: RadioListTile<T>(
         title: Text(
-          widget.title,
+          title,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        value: widget.value,
-        onChanged: widget.enabled != false ? widget.onCheckedChange : null,
-        groupValue: widget.groupValue,
+        value: value,
+        onChanged: enabled != false ? onCheckedChange : null,
+        groupValue: groupValue,
       ),
     );
   }

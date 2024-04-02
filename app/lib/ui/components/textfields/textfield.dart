@@ -13,6 +13,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ods_flutter/components/chips/ods_choice_chips.dart';
 import 'package:ods_flutter/components/lists/ods_list_switch.dart';
@@ -36,11 +37,6 @@ class ComponentTextField extends StatefulWidget {
 
 class _ComponentTextFieldState extends State<ComponentTextField> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,18 +79,11 @@ class _ComponentTextFieldState extends State<ComponentTextField> {
   }
 }
 
-class _Body extends StatefulWidget {
+class _Body extends StatelessWidget {
   _Body();
 
-  @override
-  State<_Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<_Body> {
-  var recipe =
+  final recipe =
       OdsApplication.recipes[Random().nextInt(OdsApplication.recipes.length)];
-
-  _BodyState();
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +122,7 @@ class _BodyState extends State<_Body> {
     ///Keyboard action
     switch (customizationState?.selectedKeyboardAction) {
       case KeyboardActionEnum.none:
-        if (Platform.isAndroid) {
+        if (kIsWeb || Platform.isAndroid) {
           keyboardAction = TextInputAction.none;
         } else if (Platform.isIOS) {
           keyboardAction = TextInputAction.unspecified;
@@ -155,12 +144,14 @@ class _BodyState extends State<_Body> {
         keyboardAction = TextInputAction.send;
         break;
       case KeyboardActionEnum.previous:
-        if (Platform.isAndroid) {
+        if (kIsWeb || Platform.isAndroid) {
           keyboardAction = TextInputAction.previous;
         }
         break;
       case KeyboardActionEnum.next:
         keyboardAction = TextInputAction.next;
+        break;
+      case null:
         break;
     }
 

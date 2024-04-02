@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:ods_flutter/guidelines/spacings.dart';
 import 'package:ods_flutter/l10n/l10n.dart';
 
-class OdsCircularProgressIndicator extends StatefulWidget {
+class OdsCircularProgressIndicator extends StatelessWidget {
   /// ODS CircularProgressIndicator.
   const OdsCircularProgressIndicator({
     Key? key,
@@ -29,22 +29,10 @@ class OdsCircularProgressIndicator extends StatefulWidget {
   final String? label;
 
   @override
-  State<OdsCircularProgressIndicator> createState() =>
-      _OdsCircularProgressIndicatorState();
-}
-
-class _OdsCircularProgressIndicatorState
-    extends State<OdsCircularProgressIndicator> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final l10n = context.odsL10n;
 
-    final progressValue = widget.progress ?? 0.0;
+    final progressValue = progress ?? 0.0;
 
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: progressValue),
@@ -52,7 +40,7 @@ class _OdsCircularProgressIndicatorState
       builder: (BuildContext context, double value, Widget? child) {
         final circularProgress = CircularProgressIndicator(
           semanticsLabel: l10n.componentProgressTitle,
-          value: widget.progress != null ? value : null,
+          value: progress != null ? value : null,
         );
 
         return MergeSemantics(
@@ -60,11 +48,11 @@ class _OdsCircularProgressIndicatorState
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               circularProgress,
-              if (widget.label != null)
+              if (label != null)
                 Padding(
                   padding: const EdgeInsets.all(spacingM),
                   child: Text(
-                    widget.label!,
+                    label!,
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),

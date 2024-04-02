@@ -29,17 +29,10 @@ enum ButtonEmphasis {
   functional,
 }
 
-class ButtonsContained extends StatefulWidget {
+class ButtonsContained extends StatelessWidget {
+  const ButtonsContained({Key? key, required this.emphasis}) : super(key: key);
+
   final ButtonEmphasis emphasis;
-
-  ButtonsContained({Key? key, required this.emphasis}) : super(key: key);
-
-  @override
-  _ButtonsContainedState createState() => _ButtonsContainedState();
-}
-
-class _ButtonsContainedState extends State<ButtonsContained> {
-  _ButtonsContainedState();
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +41,17 @@ class _ButtonsContainedState extends State<ButtonsContained> {
     return ButtonCustomization(
       child: Scaffold(
         bottomSheet: OdsSheetsBottom(
-          sheetContent: _CustomizationContent(emphasis: widget.emphasis),
+          sheetContent: _CustomizationContent(emphasis: emphasis),
           title: l10n.componentCustomizeTitle,
         ),
         appBar: MainAppBar(_getAppBarTitle(l10n)),
-        body: SafeArea(child: _Body(emphasis: widget.emphasis)),
+        body: SafeArea(child: _Body(emphasis: emphasis)),
       ),
     );
   }
 
   String _getAppBarTitle(AppLocalizations l10n) {
-    switch (widget.emphasis) {
+    switch (emphasis) {
       case ButtonEmphasis.highEmphasis:
         return l10n.buttonsHighEmphasisVariantTitle;
       case ButtonEmphasis.mediumEmphasis:
@@ -122,11 +115,6 @@ class _CustomizationContent extends StatefulWidget {
 
 class _CustomizationContentState extends State<_CustomizationContent> {
   _CustomizationContentState();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
