@@ -18,20 +18,10 @@ import 'package:ods_flutter_demo/main.dart';
 import 'package:ods_flutter_demo/ui/components/switches/switches_customization.dart';
 import 'package:ods_flutter_demo/ui/main_app_bar.dart';
 
-class ComponentSwitchesList extends StatefulWidget {
-  const ComponentSwitchesList({super.key});
+class ComponentSwitchesList extends StatelessWidget {
+  ComponentSwitchesList({super.key});
 
-  @override
-  State<ComponentSwitchesList> createState() => _ComponentSwitchesListState();
-}
-
-class _ComponentSwitchesListState extends State<ComponentSwitchesList> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

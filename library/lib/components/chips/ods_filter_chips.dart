@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 ///
 /// Displays a customizable chips with an optional action.
 ///
-class OdsFilterChip extends StatefulWidget {
+class OdsFilterChip extends StatelessWidget {
   /// Creates an ODS Fliter Chip.
   ///
   /// * [text] - Text to be displayed into the chip
@@ -50,48 +50,15 @@ class OdsFilterChip extends StatefulWidget {
   final Widget? leadingAvatar;
 
   @override
-  State<OdsFilterChip> createState() => _OdsFilterChipState();
-}
-
-class _OdsFilterChipState extends State<OdsFilterChip> {
-  @override
   Widget build(BuildContext context) {
     return Semantics(
       button: true,
       child: FilterChip(
-        label: Text(widget.text, style: Theme.of(context).textTheme.bodyMedium),
-        onSelected: widget.enabled != false ? widget.onClick : null,
-        selected: widget.selected,
-        avatar: widget.leadingAvatar,
+        label: Text(text),
+        onSelected: enabled != false ? onClick : null,
+        selected: selected,
+        avatar: leadingAvatar,
       ),
     );
-
-    /*
-    return Semantics(
-      button: true,
-      label: widget.label,
-      child: ChipTheme(
-        data: ChipThemeData(
-          iconTheme: const IconThemeData(color: black900),
-          checkmarkColor: black900,
-          selectedColor: orange200,
-          deleteIconColor: black900,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-          ),
-          labelStyle: const TextStyle(
-            color: ChipLabelColor(),
-          ),
-        ),
-        child: FilterChip(
-          label: Text(widget.label),
-          avatar: widget.avatar,
-          selected: widget.isSelected,
-          onSelected: widget.onSelected,
-        ),
-      ),
-    );
-
-     */
   }
 }
